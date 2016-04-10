@@ -18,11 +18,11 @@ env = process.env.NODE_ENV || 'development';
 if(env==='development') {
 	outputDir = 'builds/development/';
 	sassStyle = 'expanded';
-	htmlPretty = false;
+	htmlPretty = true;
 } else {
 	outputDir = 'builds/production/';
 	sassStyle = 'compressed';
-	htmlPretty = true;
+	htmlPretty = false;
 }
     
 var jsSources = ['components/scripts/smooth-scroll.js', 'components/scripts/script.js'],
@@ -54,10 +54,11 @@ gulp.task('html', function() {
 gulp.task('jade', function() {
   return gulp.src(jadeSources)
     .pipe(jade({
-    	pretty: jadePrettyHTML
+    	pretty: htmlPretty
     }))
     .pipe(gulp.dest(outputDir))
 });
 
-gulp.task('default', ['js', 'sass', 'jade', 'html']);
+gulp.task('default', ['jade']);
+// gulp.task('default', ['js', 'sass', 'jade', 'html']);
     

@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
+
+$blue:      #001CA8;
+$dark-blue: #030f41;
+$red:       #b61924;
+$black:     #212121;
+$white:     #F4F4F4;
+$dark-grey: #444;
+$grey:      #777;
+$light-grey:#AAA;
+
+$color-nav:         $black;
+$color-header:      $black;
+$color-footer:      $black;
+$color-background:  $white;
+$color-main:        $dark-grey;
+$color-main-light:  $grey;
+$color-pill:        $light-grey;
+
+$nav-height: 50px;
+
+$screen-small:  100px;
+$screen-medium: 768px;
+$screen-large: 1300px;
+
+$container: 1300px;
+
+$font-main: "Ubuntu Mono", monospace;
+
+html {
+    font-size: 30px;
+}

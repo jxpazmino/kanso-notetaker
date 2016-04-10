@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kanso - Simple Notetaker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Kanso is a minimalistic, no-nonsense note taker that you can use without the need of your mouse">
+    <meta property="og:title" content="">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="">
+    <link rel="canonical" href="">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!--notes list / search / settings-->
+    <section id="noteslist">
+      <div class="head">
+        <ul>
+          <li><span class="glyphicon glyphicon-notes"></span></li>
+          <li><span class="glyphicon glyphicon-search"></span></li>
+          <li><span class="glyphicon glyphicon-tag"></span></li>
+          <li><span class="glyphicon glyphicon-cogwheel"></span></li>
+        </ul>
+      </div>
+      <div class="newnote">
+        <div class="btn">New Note</div>
+      </div>
+      <div class="body">
+        <div class="note">
+          <h3>Note Title</h3>
+          <p>note snippet...</p>
+          <ul>
+            <li class="tag">Tag1</li>
+            <li class="tag">Tag2</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--note preview-->
+    <section id="notespreview">
+      <div class="head">
+        <button></button>
+        <ul>
+          <li class="tag">Tag1</li>
+          <li class="tag">Tag2</li>
+        </ul>
+      </div>
+      <div class="body"></div>
+    </section>
+    <!--notes info-->
+    <section id="notesinfo">
+      <div class="head"><span class="glyphicon glyphicon-circle_info"></span><span class="glyphicon glyphicon-justify"></span><span class="glyphicon glyphicon-show_lines"></span></div>
+      <div class="body">
+        <ul>
+          <li class="btn">Publish</li>
+          <li class="btn">Share</li>
+          <li class="btn">Delete</li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>
