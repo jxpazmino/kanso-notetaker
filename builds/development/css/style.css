@@ -4,7 +4,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,500);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -397,8 +397,15 @@ th {
   padding: 0;
 }
 
-html {
-  font-size: 30px;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#notespanel .body .note h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 * {
@@ -408,570 +415,222 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-nav, nav ul, header .name, #projects article .pill {
-  margin: 0;
-  padding: 0;
-}
-
-@media (min-width: 100px) {
-  p {
-    font-size: 1.05rem;
-  }
-}
-
-@media (min-width: 768px) {
-  p {
-    font-size: 1.2rem;
-  }
-}
-
-#project .rightimg, #project .leftimg {
-  max-width: 800px;
-  margin: 40px auto;
-}
-
-#project .rightimg:before, #project .leftimg:before, #project .rightimg:after, #project .leftimg:after {
-  content: '';
-  display: table;
-}
-
-#project .rightimg:after, #project .leftimg:after {
-  clear: both;
-}
-
-#project .rightimg img, #project .leftimg img {
-  max-width: 370px;
-}
-
-@media (min-width: 100px) {
-  #project .rightimg img, #project .leftimg img {
-    float: none;
-  }
-}
-
-@media (min-width: 100px) {
-  #project .rightimg p, #project .leftimg p {
-    float: none;
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 1300px) {
-  #project .rightimg p, #project .leftimg p {
-    max-width: 370px;
-    padding-top: 0;
-  }
-}
-
 html {
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #777;
-  font-family: "Ubuntu Mono", monospace;
-  background-color: #F4F4F4;
+  font-size: 14px;
+  font-family: "Roboto Mono", monospace;
+  background-color: #333;
+  color: #eee;
+  overflow: hidden;
 }
 
-html a {
+a {
+  color: #fff;
   text-decoration: none;
-  color: #F4F4F4;
 }
 
-.container {
-  margin: 0 auto;
-}
-
-@media (min-width: 100px) {
-  .container {
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 1300px) {
-  .container {
-    max-width: 1300px;
-  }
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  border: 0;
-  border-bottom: 1px solid #F4F4F4;
-  width: 100%;
-  z-index: 100;
-  background-color: #212121;
-}
-
-nav ul {
-  width: 100%;
+ul {
   list-style-type: none;
-  text-align: center;
 }
 
-nav ul li {
+.tag {
+  margin: 0.3em 0.3em 0.2em 0;
+  border-radius: 13px;
+  height: 26px;
+  border: 2px solid #6d7279;
+  color: #a6abaf;
+  background-color: transparent;
+  min-width: 50px;
+  width: auto;
+  text-align: center;
   display: inline-block;
-  line-height: 50px;
-  height: 50px;
-  letter-spacing: 1px;
+  line-height: 1em;
+  font-size: 0.85rem;
 }
 
-@media (min-width: 100px) {
-  nav ul li {
-    margin-right: 30px;
-    font-size: 0.9rem;
-  }
+.tag .selected {
+  border: 2px solid #62656d;
+  color: #95999d;
 }
 
-@media (min-width: 768px) {
-  nav ul li {
-    margin-right: 70px;
-    font-size: 1.1rem;
-  }
+.tag span {
+  display: inline-block;
+  margin: 0.59em 1.42em 0;
 }
 
-nav ul li:last-child {
-  margin-right: 0;
+#notespanel .newnote, #notespanel .body .note {
+  border-bottom: 2px solid #4a5059;
 }
 
-header {
-  background-color: #212121;
-  position: relative;
-  margin-top: 50px;
+#notespanel {
+  width: 280px;
+  height: 100vh;
+  float: left;
 }
 
-@media (min-width: 100px) {
-  header {
-    height: 310px;
-  }
+#notespanel .header {
+  height: 70px;
+  background-color: #474747;
 }
 
-@media (min-width: 768px) {
-  header {
-    height: 410px;
-  }
-}
-
-header span {
-  color: #F4F4F4;
-  margin: 50px 22px 0;
-}
-
-header .name {
+#notespanel .header li {
+  float: left;
+  width: 70px;
+  height: 70px;
+  font-size: 24px;
   text-align: center;
-  width: 100%;
+}
+
+#notespanel .header li span {
+  color: #cdcdcf;
+  margin-top: 28px;
+}
+
+#notespanel .header li span:hover {
+  color: #fff;
+}
+
+#notespanel .header li.selected {
+  background-color: #333;
+}
+
+#notespanel .header li.selected span {
+  color: #fff;
+}
+
+#notespanel .newnote {
+  height: 95px;
+  position: relative;
+}
+
+#notespanel .newnote .btn {
+  width: 200px;
+  border-radius: 5px;
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display: inline-block;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  cursor: pointer;
 }
 
-header .name svg {
-  width: 90%;
-  height: 9%;
-  max-width: 660px;
-  max-height: 66px;
-  display: inline-block;
+#notespanel .body {
+  overflow-y: auto;
+  height: calc(100vh - 70px - 95px - 2px);
 }
 
-header .name h1 {
-  color: #F4F4F4;
-  font-weight: normal;
-  font-family: "Ubuntu Mono", monospace;
-  margin: -20px auto 30px;
+#notespanel .body .note {
+  cursor: pointer;
+  min-height: 80px;
+  padding: 14px;
+  margin: 0;
 }
 
-@media (min-width: 100px) {
-  header .name h1 {
-    font-size: 2.8rem;
-    line-height: 2.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  header .name h1 {
-    font-size: 3.8rem;
-    line-height: 3.5rem;
-  }
-}
-
-header .name h2 {
-  color: #F4F4F4;
-  font-weight: normal;
-  font-family: "Ubuntu Mono", monospace;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 15px 20px -5px;
-}
-
-@media (min-width: 100px) {
-  header .name h2 {
-    font-size: 1.15rem;
-    line-height: 1.45rem;
-  }
-}
-
-@media (min-width: 768px) {
-  header .name h2 {
-    font-size: 1.5rem;
-    line-height: 1.35rem;
-  }
-}
-
-#project {
-  text-align: center;
-}
-
-#project .bordered {
-  box-shadow: 0 0 0 1px #AAA, 0 2px 0 1px #AAA;
-}
-
-#project a {
-  color: #444;
-  text-decoration: underline;
-}
-
-#project h3 {
-  margin-top: 60px;
-  font-size: 2.1rem;
-  color: #212121;
-  text-shadow: 0 2px #ddd;
-  width: 100%;
-}
-
-#project p {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 30px;
-  text-align: justify;
-}
-
-#project img {
-  margin: 5px auto 40px;
-  max-width: 700px;
-  width: 90%;
-  border-radius: 5px;
-}
-
-@media (min-width: 1300px) {
-  #project .rightimg img {
-    float: right;
-  }
-}
-
-@media (min-width: 1300px) {
-  #project .rightimg p {
-    float: left;
-    padding-left: 0;
-  }
-}
-
-@media (min-width: 1300px) {
-  #project .leftimg img {
-    float: left;
-  }
-}
-
-@media (min-width: 1300px) {
-  #project .leftimg p {
-    float: right;
-    padding-right: 0;
-  }
-}
-
-#projects {
-  margin-bottom: 50px;
-}
-
-#projects h3 {
-  text-align: center;
-  font-size: 2.1rem;
-  width: 100%;
-  display: inline-block;
-  margin-top: 80px;
-  margin-bottom: 60px;
-  color: #212121;
-  text-shadow: 0 2px #ddd;
-}
-
-#projects article {
-  vertical-align: top;
-  text-align: center;
-  display: inline-block;
-}
-
-#projects article:last-of-type:before, #projects article:last-of-type:after {
-  content: '';
-  display: table;
-}
-
-#projects article:last-of-type:after {
-  clear: both;
-}
-
-#projects article img {
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 0 1px #AAA, 0 2px 0 1px #AAA;
-  overflow: hidden;
-  height: auto;
-}
-
-@media (min-width: 100px) {
-  #projects article img {
-    width: 250px;
-  }
-}
-
-@media (min-width: 768px) {
-  #projects article img {
-    width: 350px;
-  }
-}
-
-#projects article h4 {
-  color: #444;
-  font-size: 25px;
-  font-size: 1.65rem;
-  margin: 11px auto;
-  padding-bottom: 10px;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-}
-
-@media (min-width: 100px) {
-  #projects article h4 {
-    width: 90%;
-  }
-}
-
-@media (min-width: 768px) {
-  #projects article h4 {
-    width: 350px;
-  }
-}
-
-#projects article p {
-  color: #777;
-  line-height: 1.7rem;
-  text-align: center;
-  margin: 20px auto;
-}
-
-#projects article p a {
-  text-decoration: underline;
-  color: #777;
-}
-
-@media (min-width: 100px) {
-  #projects article p {
-    width: 90%;
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  #projects article p {
-    width: 350px;
-  }
-}
-
-#projects article .pill {
-  margin-bottom: 87px;
-}
-
-#projects article .pill li {
-  display: inline-block;
-  padding: 5px 8px;
-  margin-right: 5px;
+#notespanel .body .note h3 {
+  font-size: 1.1rem;
   margin-bottom: 5px;
-  border-radius: 3px;
-  background-color: #AAA;
-  text-transform: uppercase;
-  font-size: 0.875em;
-  font-weight: 300;
-  letter-spacing: 1px;
-  color: white;
+  color: #dee5ed;
+  font-weight: 500;
+  padding-right: 12px;
 }
 
-@media (min-width: 100px) {
-  #projects article {
-    width: 100%;
-  }
+#notespanel .body .note p {
+  margin: 8px 0;
+  color: #8f959b;
+  padding-right: 12px;
 }
 
-@media (min-width: 768px) {
-  #projects article {
-    width: 49%;
-  }
+#notespanel .body .note.selected {
+  background-color: #474747;
 }
 
-@media (min-width: 1300px) {
-  #projects article {
-    width: 33%;
-  }
+#notespanel .body .note ul {
+  max-height: 35px;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#about, #contact {
-  padding: 30px;
-  color: #F4F4F4;
-  background-color: #777;
-  text-align: center;
-}
-
-#about h3, #contact h3 {
-  font-size: 2.1rem;
-  text-shadow: 0 2px #212121;
-}
-
-#about h3:first-of-type, #contact h3:first-of-type {
-  margin-top: 80px;
-}
-
-#about p, #contact p {
-  max-width: 620px;
-  margin: 10px auto 38px;
-  font-size: 1.25rem;
-}
-
-#about img, #contact img {
-  margin: 50px auto;
-}
-
-#about dl, #contact dl {
-  max-width: 510px;
-  margin: 10px auto 38px;
-  font-size: 1.25rem;
-}
-
-#about dt, #contact dt {
+#notespanel .body .note ul li {
   display: inline-block;
-  vertical-align: top;
-  text-align: left;
-  margin-left: 0;
-  font-weight: bold;
-  margin-bottom: 10px;
+  z-index: -999999999;
 }
 
-@media (min-width: 100px) {
-  #about dt, #contact dt {
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  #about dt, #contact dt {
-    width: 90px;
-  }
-}
-
-#about dd, #contact dd {
-  display: inline-block;
-  text-align: left;
-  margin-bottom: 30px;
-}
-
-@media (min-width: 100px) {
-  #about dd, #contact dd {
-    width: 90%;
-  }
-}
-
-@media (min-width: 768px) {
-  #about dd, #contact dd {
-    width: 350px;
-  }
-}
-
-#about a, #contact a {
-  color: #F4F4F4;
-  margin-bottom: 60px;
-  display: inline-block;
-  text-decoration: underline;
-}
-
-.button {
-  background-color: #4e4e4e;
-  border-radius: 5px;
-  color: #F4F4F4 !important;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 0 auto 70px;
-}
-
-.button:hover {
-  background-color: #212121;
+#notesview {
+  height: 100vh;
+  min-width: calc(100% - 560px);
+  max-width: calc(100% - 560px);
+  width: auto;
+  width: auto;
+  background-color: #fff;
+  float: left;
   color: #212121;
 }
 
-.back {
-  margin-bottom: 90px;
+#notesview .header {
+  height: 70px;
+  background-color: #f2f2f2;
 }
 
-.back a {
-  display: inline-block;
+#notesview .header a {
+  font-size: 1.4rem;
+  color: #767676;
+  float: left;
+  width: 40px;
+  height: 70px;
+  padding-left: 20px;
 }
 
-@media (min-width: 100px) {
-  .back a {
-    font-size: 1.2rem;
-  }
+#notesview .body {
+  font-size: 1.1rem;
+  overflow-y: auto;
 }
 
-@media (min-width: 768px) {
-  .back a {
-    font-size: 1.5rem;
-  }
+#notesview .body input {
+  font-size: 1.55rem;
+  padding: 18px 56px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 58px;
+  border: 0;
+  font-weight: 500;
+  outline: none;
+  overflow: none;
+  box-shadow: none;
+  background-color: #fff;
 }
 
-.clearfix:before, .clearfix:after {
-  content: '';
-  display: table;
+#notesview .body .content {
+  font-size: 1.12rem;
+  padding: 14px 56px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+  height: calc(100vh - 70px - 58px);
+  outline: none;
+  overflow: none;
+  box-shadow: none;
+  background-color: #fff;
+  border: 0;
 }
 
-.clearfix:after {
-  clear: both;
+#notesview .body [contentEditable=true]:empty:before {
+  content: attr(data-text);
+  color: #b1a9a9;
 }
 
-footer {
-  height: 50px;
-  color: #F4F4F4;
-  text-align: center;
-  background-color: #212121;
-  line-height: 50px;
-  border-top: 1px solid #F4F4F4;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-}
-
-.name use {
-  opacity: 0;
-  animation: nameFadeIn 650ms forwards ease-in 100ms, nameUp 620ms forwards ease-out;
-  fill: #F4F4F4;
-}
-
-/*animation*/
-@keyframes nameFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes nameUp {
-  from {
-    transform: translateY(30%);
-  }
-  to {
-    transform: translateY(0%);
-  }
+#notesinfo {
+  float: right;
+  width: 280px;
+  height: 100vh;
+  background-color: #d9e8f9;
 }
 
 /*!

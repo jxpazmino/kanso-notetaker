@@ -9,35 +9,64 @@ doctype html
 html
     include ./includes/head
     body
-        //notes list / search / settings
-        section#noteslist
-            .head
+        //notes list / search / settings panel
+        section#notespanel
+            .header
                 ul
-                    li: span.glyphicon.glyphicon-notes
-                    li: span.glyphicon.glyphicon-search
-                    li: span.glyphicon.glyphicon-tag
-                    li: span.glyphicon.glyphicon-cogwheel
+                    li.selected: a(href="#"): span.glyphicon.glyphicon-notes
+                    li: a(href="#"): span.glyphicon.glyphicon-search
+                    li: a(href="#"): span.glyphicon.glyphicon-tag
+                    li: a(href="#"): span.glyphicon.glyphicon-cogwheel
             .newnote
                 .btn New Note
             .body
                 .note
+                    h3 Note Title ippet ksldjf lsk sdlfks 
+                    p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...
+                    ul
+                        li.tag: span Work
+                        li.tag: span programming
+                .note.selected
+                    h3 Note Title
+                    p note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...
+                    ul
+                        li.tag: span programming
+                        li.tag: span Web development
+                .note
+                    h3 Untitled
+                    p note snippet...
+                    ul
+                        li.tag: span Work
+                        li.tag: span !
+                        li.tag: span cooking
+                .note
+                    h3 Movies
+                    p this is a movie note...
+                    ul
+                        li.tag: span Movies
+                        li.tag: span haha
+                .note
                     h3 Note Title
                     p note snippet...
                     ul
-                        li.tag Tag1
-                        li.tag Tag2
+                        li.tag: span Work
+                        li.tag: span Reading
+                        li.tag: span ha
+                        li.tag: span you
         //note preview
-        section#notespreview
-            .head
-                button
+        section#notesview
+            .header
+                a(href="#"): span.glyphicon.glyphicon-show_lines
                 ul
                     li.tag Tag1
                     li.tag Tag2
             .body
+                input(placeholder="Add a title..." value="Untitled")
+                div.content(contenteditable="true" data-text="Enter text here")
         
         //notes info
         section#notesinfo
-            .head
+            .header
                 span.glyphicon.glyphicon-circle_info
                 span.glyphicon.glyphicon-justify
                 span.glyphicon.glyphicon-show_lines

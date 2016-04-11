@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <!--notes list / search / settings-->
-    <section id="noteslist">
-      <div class="head">
+    <!--notes list / search / settings panel-->
+    <section id="notespanel">
+      <div class="header">
         <ul>
-          <li><span class="glyphicon glyphicon-notes"></span></li>
-          <li><span class="glyphicon glyphicon-search"></span></li>
-          <li><span class="glyphicon glyphicon-tag"></span></li>
-          <li><span class="glyphicon glyphicon-cogwheel"></span></li>
+          <li class="selected"><a href="#"><span class="glyphicon glyphicon-notes"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-tag"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-cogwheel"></span></a></li>
         </ul>
       </div>
       <div class="newnote">
@@ -27,29 +27,66 @@
       </div>
       <div class="body">
         <div class="note">
+          <h3>Note Title ippet ksldjf lsk sdlfks </h3>
+          <p>note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...</p>
+          <ul>
+            <li class="tag"><span>Work</span></li>
+            <li class="tag"><span>programming</span></li>
+          </ul>
+        </div>
+        <div class="note selected">
+          <h3>Note Title</h3>
+          <p>note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...</p>
+          <ul>
+            <li class="tag"><span>programming</span></li>
+            <li class="tag"><span>Web development</span></li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>Untitled</h3>
+          <p>note snippet...</p>
+          <ul>
+            <li class="tag"><span>Work</span></li>
+            <li class="tag"><span>!</span></li>
+            <li class="tag"><span>cooking</span></li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>Movies</h3>
+          <p>this is a movie note...</p>
+          <ul>
+            <li class="tag"><span>Movies</span></li>
+            <li class="tag"><span>haha</span></li>
+          </ul>
+        </div>
+        <div class="note">
           <h3>Note Title</h3>
           <p>note snippet...</p>
           <ul>
-            <li class="tag">Tag1</li>
-            <li class="tag">Tag2</li>
+            <li class="tag"><span>Work</span></li>
+            <li class="tag"><span>Reading</span></li>
+            <li class="tag"><span>ha</span></li>
+            <li class="tag"><span>you</span></li>
           </ul>
         </div>
       </div>
     </section>
     <!--note preview-->
-    <section id="notespreview">
-      <div class="head">
-        <button></button>
+    <section id="notesview">
+      <div class="header"><a href="#"><span class="glyphicon glyphicon-show_lines"></span></a>
         <ul>
           <li class="tag">Tag1</li>
           <li class="tag">Tag2</li>
         </ul>
       </div>
-      <div class="body"></div>
+      <div class="body">
+        <input placeholder="Add a title..." value="Untitled">
+        <div contenteditable="true" data-text="Enter text here" class="content"></div>
+      </div>
     </section>
     <!--notes info-->
     <section id="notesinfo">
-      <div class="head"><span class="glyphicon glyphicon-circle_info"></span><span class="glyphicon glyphicon-justify"></span><span class="glyphicon glyphicon-show_lines"></span></div>
+      <div class="header"><span class="glyphicon glyphicon-circle_info"></span><span class="glyphicon glyphicon-justify"></span><span class="glyphicon glyphicon-show_lines"></span></div>
       <div class="body">
         <ul>
           <li class="btn">Publish</li>

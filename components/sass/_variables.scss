@@ -1,32 +1,60 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,500);
 
-$blue:      #001CA8;
-$dark-blue: #030f41;
-$red:       #b61924;
-$black:     #212121;
-$white:     #F4F4F4;
-$dark-grey: #444;
-$grey:      #777;
-$light-grey:#AAA;
+$white:             #fff;
 
-$color-nav:         $black;
-$color-header:      $black;
-$color-footer:      $black;
-$color-background:  $white;
-$color-main:        $dark-grey;
-$color-main-light:  $grey;
-$color-pill:        $light-grey;
+//notes-info
+$baby-blue-dark:    #b5c6da;
+$baby-blue:         #cbdaec;
+$baby-blue-light:   #d9e8f9;
+$metal-gun:         #576572;
 
-$nav-height: 50px;
+//special buttons
+$red:               #e74450;
+$red-light:         #dfa4b3;
+$blue:              #4a90e2;
 
-$screen-small:  100px;
+//bg notestpanel, notesview
+//default-theme
+$bg-default:        #474747;
+$bg-default-dark:   #333; //darker
+
+//dark theme
+$bg-dark-1:         #383f49;
+$bg-dark-2:         #323842; //darker
+
+//notespanel
+//selected
+$notes-title-selected:       #ced3d3;
+$notes-excerpt-selected:     #80858b;
+$notes-tag-border-selected:  #62656d;
+$notes-tag-name-selected:    #95999d;
+//unselected, top of notesview
+$notes-title:       #dee5ed;
+$notes-excerpt:     #8f959b;
+$notes-tag-border:  #6d7279;
+$notes-tag-name:    #a6abaf;
+$notes-spacer:      #4a5059;
+
+//notesinfo
+$button-border:     $baby-blue-dark;
+$button-text:       $metal-gun;
+$bg-info-header:    $baby-blue;
+$bg-info-body:      $baby-blue-light;
+
+$bg-color-1: $bg-default-dark;
+$bg-color-2: $bg-default;
+$special-button: $blue;
+
+$default-bg-preview-header: #f2f2f2;
+$default-bg-preview-body: $white;
+$default-preview-text-color: #212121;
+
+$nav-height:        70px;
+$new-note-height:   95px;
+$input-title-height: 58px;
+
+$screen-small:  0;
 $screen-medium: 768px;
 $screen-large: 1300px;
 
-$container: 1300px;
-
-$font-main: "Ubuntu Mono", monospace;
-
-html {
-    font-size: 30px;
-}
+$font-main: "Roboto Mono", monospace;
