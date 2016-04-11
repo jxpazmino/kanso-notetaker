@@ -5,6 +5,7 @@
  *    user zoom.
  */
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,500);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -402,7 +403,7 @@ th {
   padding: 0;
 }
 
-#notespanel .body .note h3 {
+#notespanel .body .note h3, #notespanel .body .note p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -417,7 +418,7 @@ th {
 
 html {
   font-size: 14px;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Source Sans Pro", Arial, sans-serif;
   background-color: #333;
   color: #eee;
   overflow: hidden;
@@ -478,15 +479,7 @@ ul {
   height: 70px;
   font-size: 24px;
   text-align: center;
-}
-
-#notespanel .header li span {
-  color: #cdcdcf;
-  margin-top: 28px;
-}
-
-#notespanel .header li span:hover {
-  color: #fff;
+  position: relative;
 }
 
 #notespanel .header li.selected {
@@ -495,6 +488,36 @@ ul {
 
 #notespanel .header li.selected span {
   color: #fff;
+}
+
+#notespanel .header li .glyphicon {
+  color: #cdcdcf;
+  margin-top: 28px;
+}
+
+#notespanel .header li .glyphicon:hover {
+  color: #fff;
+}
+
+#notespanel .header li .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 0.48em;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 10px;
+  left: 45px;
+  z-index: 10;
+  transition-property: visibility;
+}
+
+#notespanel .header li a:hover .tooltiptext {
+  visibility: visible;
+  transition-delay: 1s;
 }
 
 #notespanel .newnote {
@@ -526,43 +549,35 @@ ul {
   min-height: 80px;
   padding: 14px;
   margin: 0;
+  color: #8f959b;
 }
 
 #notespanel .body .note h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 5px;
   color: #dee5ed;
-  font-weight: 500;
+  font-weight: bold;
   padding-right: 12px;
 }
 
 #notespanel .body .note p {
-  margin: 8px 0;
-  color: #8f959b;
+  margin: 7px 0;
   padding-right: 12px;
+}
+
+#notespanel .body .note .date {
+  display: inline-block;
+  margin: 5px 0 0;
 }
 
 #notespanel .body .note.selected {
   background-color: #474747;
 }
 
-#notespanel .body .note ul {
-  max-height: 35px;
-  max-width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#notespanel .body .note ul li {
-  display: inline-block;
-  z-index: -999999999;
-}
-
-#notesview {
+#notesedit {
   height: 100vh;
-  min-width: calc(100% - 560px);
-  max-width: calc(100% - 560px);
+  min-width: calc(100% - 280px - 280px);
+  max-width: calc(100% - 280px - 280px);
   width: auto;
   width: auto;
   background-color: #fff;
@@ -570,12 +585,12 @@ ul {
   color: #212121;
 }
 
-#notesview .header {
+#notesedit .header {
   height: 70px;
   background-color: #f2f2f2;
 }
 
-#notesview .header a {
+#notesedit .header a {
   font-size: 1.4rem;
   color: #767676;
   float: left;
@@ -584,13 +599,13 @@ ul {
   padding-left: 20px;
 }
 
-#notesview .body {
-  font-size: 1.1rem;
+#notesedit .body {
+  font-family: "Roboto Mono", Courier, monospace;
   overflow-y: auto;
 }
 
-#notesview .body input {
-  font-size: 1.55rem;
+#notesedit .body input {
+  font-size: 1.45rem;
   padding: 18px 56px 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -605,8 +620,8 @@ ul {
   background-color: #fff;
 }
 
-#notesview .body .content {
-  font-size: 1.12rem;
+#notesedit .body .content {
+  font-size: 1.1rem;
   padding: 14px 56px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -621,7 +636,7 @@ ul {
   border: 0;
 }
 
-#notesview .body [contentEditable=true]:empty:before {
+#notesedit .body [contentEditable=true]:empty:before {
   content: attr(data-text);
   color: #b1a9a9;
 }

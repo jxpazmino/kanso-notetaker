@@ -14,10 +14,22 @@ html
         section#notespanel
             .header
                 ul
-                    li.selected: a(href="#"): span.glyphicon.glyphicon-notes
-                    li: a(href="#"): span.glyphicon.glyphicon-search
-                    li: a(href="#"): span.glyphicon.glyphicon-tag
-                    li: a(href="#"): span.glyphicon.glyphicon-cogwheel
+                    li.selected
+                        a(href="#")
+                            span.glyphicon.glyphicon-notes
+                            span.tooltiptext Notes
+                    li
+                        a(href="#")
+                            span.glyphicon.glyphicon-search
+                            span.tooltiptext Search
+                    li
+                        a(href="#")
+                            span.glyphicon.glyphicon-tag
+                            span.tooltiptext Tags
+                    li
+                        a(href="#")
+                            span.glyphicon.glyphicon-cogwheel
+                            span.tooltiptext Preferences
             .newnote
                 .btn New Note
             .body
@@ -30,9 +42,11 @@ html
                 .note.selected
                     h3 Note Title
                     p note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...
-                    ul
-                        li.tag: span programming
-                        li.tag: span Web development
+                    span.date May 3, 2016
+                .note
+                    h3 Note Title something else goes ehre
+                    p note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...
+                    p 03/25/2016
                 .note
                     h3 Untitled
                     p note snippet...
@@ -55,7 +69,7 @@ html
                         li.tag: span ha
                         li.tag: span you
         //note preview
-        section#notesview
+        section#notesedit
             .header
                 a(href="#"): span.glyphicon.glyphicon-show_lines
                 ul

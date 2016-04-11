@@ -75,9 +75,8 @@ ul {
 }
 
 #notespanel {
-    width: 280px;
+    width: $nav-width * 4;
     height: 100vh;
-    // overflow: hidden;
     float: left;
     
     .header {
@@ -85,22 +84,43 @@ ul {
         background-color: $bg-color-2;
         li {
             float: left;
-            width: 70px;
+            width: $nav-width;
             height: $nav-height;
             font-size: 24px;
             text-align: center;
-            span {
+            position: relative;
+            &.selected {
+                span {
+                    color: $white;
+                }
+                background-color: $bg-color-1;
+            }
+            .glyphicon {
                 color: #cdcdcf;
                 margin-top: 28px;
                 &:hover {
                     color: $white;
                 }
             }
-            &.selected {
-                span {
-                    color: $white;
-                }
-                background-color: $bg-color-1;
+            .tooltiptext {
+                visibility: hidden;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                padding: 4px 6px;
+                border-radius: 3px;
+                font-size: 0.48em;
+            
+                /* Position the tooltip text - see examples below! */
+                position: absolute;
+                top: 10px;
+                left: 45px;
+                z-index: 10;
+                transition-property: visibility;
+            }
+            a:hover .tooltiptext {
+                visibility: visible;
+                transition-delay: 1s;
             }
         }
     }
@@ -133,42 +153,46 @@ ul {
             @extend %spacer;
             padding: 14px;
             margin: 0;
+            color: $notes-excerpt;
             h3 {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 margin-bottom: 5px;
                 color: $notes-title;
-                font-weight: 500;
+                font-weight: bold;
                 @extend %ellipsis;
                 padding-right: 12px;
             }
             p {
-                margin: 8px 0;
-                color: $notes-excerpt;
-                // @extend %ellipsis;
+                margin: 7px 0;
+                @extend %ellipsis;
                 padding-right: 12px;
+            }
+            .date {
+                display: inline-block;
+                margin: 5px 0 0;
             }
             &.selected {
                 background-color: $bg-color-2;
             }
-            ul {
-                max-height: 35px;
-                max-width: 250px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                li {
-                    display: inline-block;
-                    z-index: -999999999;
-                }
-            }
+            // ul {
+            //     max-height: 35px;
+            //     max-width: 250px;
+            //     white-space: nowrap;
+            //     overflow: hidden;
+            //     text-overflow: ellipsis;
+            //     li {
+            //         display: inline-block;
+            //         z-index: -999999999;
+            //     }
+            // }
         }
     }
 }
 
-#notesview {
+#notesedit {
     height: 100vh;
-    min-width: calc(100% - 560px);
-    max-width: calc(100% - 560px);
+    min-width: calc(100% - #{$notespanel-width} - #{$notesinfo-width});
+    max-width: calc(100% - #{$notespanel-width} - #{$notesinfo-width});
     width: auto;
     width: auto;
     background-color: $default-bg-preview-body;
@@ -187,7 +211,7 @@ ul {
         }
     }
     .body {
-        font-size: 1.1rem;
+        font-family: $font-editor;
         overflow-y: auto;
         
         // textarea {
@@ -206,7 +230,8 @@ ul {
         //     background-color: $white;
         // }
         input {
-            font-size: 1.55rem;
+            font-size: 1.45rem;
+            // font-size: 1.65rem;
             padding: 18px 56px 0;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -221,7 +246,8 @@ ul {
             background-color: $white;
         }
         .content {
-            font-size: 1.12rem;
+            font-size: 1.1rem;
+            // font-size: 1.22rem;
             padding: 14px 56px;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -244,7 +270,7 @@ ul {
 
 #notesinfo {
     float: right;
-    width: 280px;
+    width: $notesinfo-width;
     height: 100vh;
     background-color: $bg-info-body;
 }
