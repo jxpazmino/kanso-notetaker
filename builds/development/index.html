@@ -4,7 +4,7 @@
     <title>Kanso - Simple Notetaker</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Kanso is a minimalistic, no-nonsense note taker that you can use without the need of your mouse">
+    <meta name="description" content="Kanso is a minimalistic, no-nonsense note taker">
     <meta property="og:title" content="">
     <meta property="og:url" content="">
     <meta property="og:description" content="">
@@ -13,85 +13,90 @@
   </head>
   <body>
     <!--notes list / search / settings panel-->
-    <section id="notespanel">
-      <div class="header">
+    <section id="panel">
+      <div id="tabs" class="header">
         <ul>
-          <li class="selected"><a href="#"><span class="glyphicon glyphicon-notes"></span></a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-tag"></span></a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cogwheel"></span></a></li>
+          <li class="selected"><a href="#"><span class="fa fa-file-text-o"></span><span class="tooltiptext">Notes</span></a></li>
+          <li><a href="#"><span class="fa fa-search"></span><span class="tooltiptext">Search</span></a></li>
+          <li><a href="#"><span class="fa fa-tags"></span><span class="tooltiptext">Tags</span></a></li>
+          <li><a href="#"><span class="fa fa-cog"></span><span class="tooltiptext">Preferences</span></a></li>
         </ul>
       </div>
-      <div class="newnote">
-        <div class="btn">New Note</div>
+      <div id="notes" class="currentpanel">
+        <div class="tools">
+          <div class="newnote">New Note</div>
+          <div class="sort">Sort<span class="fa fa-caret-down"></span></div>
+        </div>
+        <div class="body">
+          <!-- .note.selected-->
+          <!--     h3 Note Title ippet ksldjf lsk sdlfks -->
+          <!--     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...-->
+          <!--     ul-->
+          <!--         li.tag: span Work1234560-->
+          <!--         li.tag: span programming-->
+          <!--         li.tag: span development-->
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.sjda fklajslk lsjdl   slkd</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note selected">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here. lsdkj f;lksd jf;askl dfj;alks dfj;alks</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+          <div class="note">
+            <h3>Note Title something else goes ehre</h3>
+            <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          </div>
+        </div>
+        <!-- .tools-->
+        <!--     input(type="text")-->
       </div>
-      <div class="body">
-        <div class="note">
-          <h3>Note Title ippet ksldjf lsk sdlfks </h3>
-          <p>note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...</p>
-          <ul>
-            <li class="tag"><span>Work</span></li>
-            <li class="tag"><span>programming</span></li>
-          </ul>
-        </div>
-        <div class="note selected">
-          <h3>Note Title</h3>
-          <p>note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...</p>
-          <ul>
-            <li class="tag"><span>programming</span></li>
-            <li class="tag"><span>Web development</span></li>
-          </ul>
-        </div>
-        <div class="note">
-          <h3>Untitled</h3>
-          <p>note snippet...</p>
-          <ul>
-            <li class="tag"><span>Work</span></li>
-            <li class="tag"><span>!</span></li>
-            <li class="tag"><span>cooking</span></li>
-          </ul>
-        </div>
-        <div class="note">
-          <h3>Movies</h3>
-          <p>this is a movie note...</p>
-          <ul>
-            <li class="tag"><span>Movies</span></li>
-            <li class="tag"><span>haha</span></li>
-          </ul>
-        </div>
-        <div class="note">
-          <h3>Note Title</h3>
-          <p>note snippet...</p>
-          <ul>
-            <li class="tag"><span>Work</span></li>
-            <li class="tag"><span>Reading</span></li>
-            <li class="tag"><span>ha</span></li>
-            <li class="tag"><span>you</span></li>
-          </ul>
-        </div>
-      </div>
+      <!-- #tags-->
+      <!-- #settings        -->
     </section>
-    <!--note preview-->
-    <section id="notesview">
-      <div class="header"><a href="#"><span class="glyphicon glyphicon-show_lines"></span></a>
+    <section id="edit">
+      <div id="tags" class="header">
+        <div class="menu-toggle"><span class="fa fa-bars"></span></div>
         <ul>
-          <li class="tag">Tag1</li>
-          <li class="tag">Tag2</li>
+          <li class="tag"><span>Ideas</span></li>
+          <li class="tag"><span>Work</span></li>
+          <li class="tag"><span>programming</span></li>
+          <li class="tag"><span>+</span></li>
         </ul>
       </div>
       <div class="body">
-        <input placeholder="Add a title..." value="Untitled">
+        <input placeholder="Add a title...">
         <div contenteditable="true" data-text="Enter text here" class="content"></div>
       </div>
-    </section>
-    <!--notes info-->
-    <section id="notesinfo">
-      <div class="header"><span class="glyphicon glyphicon-circle_info"></span><span class="glyphicon glyphicon-justify"></span><span class="glyphicon glyphicon-show_lines"></span></div>
-      <div class="body">
+      <div id="actions-sidebar">
         <ul>
-          <li class="btn">Publish</li>
-          <li class="btn">Share</li>
-          <li class="btn">Delete</li>
+          <li><span class="action fa fa-floppy-o"></span></li>
+          <li><span class="action fa fa-envelope-o"></span></li>
+          <li><span class="action fa fa-trash-o"></span></li>
         </ul>
       </div>
     </section>

@@ -9,6 +9,10 @@
     text-overflow: ellipsis;
 }
 
+%spacer {
+    border-bottom: 2px solid $notes-spacer;
+}
+
 * {
     // -webkit-transition: margin 200ms linear;
     //    -moz-transition: margin 200ms linear;
@@ -20,19 +24,10 @@
         -ms-text-size-adjust: 100%;
 }
 
-// ::-webkit-scrollbar { width: 3px; height: 3px;}
-// ::-webkit-scrollbar-button {  background-color: #666; }
-// ::-webkit-scrollbar-track {  background-color: #fff;}
-// ::-webkit-scrollbar-track-piece { background-color: #999;}
-// ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
-// ::-webkit-scrollbar-corner { background-color: #999;}
-// ::-webkit-resizer { background-color: #666;}
-
 html {
     font-size: 14px;
     font-family: $font-main;
-    background-color: $bg-color-1;
-    color: #eee;
+    color: #343434;
     overflow: hidden;
 }
 
@@ -48,15 +43,15 @@ ul {
 .tag {
     margin: 0.3em 0.3em 0.2em 0;
     border-radius: 13px;
-    height: 26px;
+    height: 23px;
     border: 2px solid $notes-tag-border;
     color: $notes-tag-name;
     background-color: transparent;
-    min-width: 50px;
+    min-width: 42px;
     width: auto;
     text-align: center;
     display: inline-block;
-    line-height: 1em;
+    line-height: 0.85em;
     font-size: 0.85rem;
     
     .selected {
@@ -70,147 +65,219 @@ ul {
     }
 }
 
-%spacer {
-    border-bottom: 2px solid $notes-spacer;
+.header {
+    height: $nav-height;
 }
 
-#notespanel {
-    width: 280px;
+#panel {
+    background-color: $bg-color-1;
+    width: $nav-width*4;
     height: 100vh;
-    // overflow: hidden;
     float: left;
     
-    .header {
-        height: $nav-height;
+    #tabs {
         background-color: $bg-color-2;
         li {
             float: left;
-            width: 70px;
+            width: $nav-width;
             height: $nav-height;
-            font-size: 24px;
+            font-size: 22px;
             text-align: center;
-            span {
-                color: #cdcdcf;
-                margin-top: 28px;
-                &:hover {
-                    color: $white;
-                }
-            }
+            position: relative;
             &.selected {
                 span {
                     color: $white;
                 }
                 background-color: $bg-color-1;
             }
+            .fa {
+                color: #cdcdcf;
+                margin-top: 23px;
+                &:hover {
+                    color: $white;
+                }
+            }
+            .tooltiptext {
+                visibility: hidden;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                padding: 4px 6px;
+                border-radius: 3px;
+                font-size: 0.48em;
+                position: absolute;
+                top: 10px;
+                left: 45px;
+                z-index: 10;
+                transition-property: visibility;
+            }
+            a:hover .tooltiptext {
+                visibility: visible;
+                transition-delay: 650ms;
+            }
         }
     }
     
-    .newnote {
-        height: $new-note-height;
-        position: relative;
-        @extend %spacer;
-        .btn {
-            width: 200px;
-            border-radius: 5px;
-            background-color: $special-button;
-            color: $white;
-            padding: 15px;
+    .body {
+        overflow-y: scroll;
+        height: calc(100vh - #{$nav-height} - #{$tools-height} - 26px);
+    }
+    .currentpanel {
+        display: block !important;
+    }
+    
+    #notes {
+        display: none;
+        .tools {
             text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateY(-50%) translateX(-50%);
-            cursor: pointer;
+            padding: 12px;
+            height: $tools-height;
+            @extend %spacer;
+            &:last-of-type {
+                border-top: 1px solid $notes-spacer;
+            }
+            .newnote {
+                @include borderbox;
+                height: 30px;
+                width: 100px;
+                float: right;
+                border-radius: 5px;
+                background-color: $special-button;
+                color: $white;
+                text-align: center;
+                cursor: pointer;
+                padding-top: 0;
+                font-size: 0.9rem;
+                font-weight: 400;
+                // font-family: 'Roboto Mono';
+                line-height: 29px;
+                
+                &:hover {
+                    background-color: darken($special-button, 6%);
+                }
+            }
+            .sort {
+                cursor: pointer;
+                float: left;
+                color: $white;
+                margin-top: 5px;
+                span {
+                    margin: auto 6px;
+                }
+            }
+            input {
+                @include borderbox;
+                padding: 8px 13px;
+                width: 100%;
+                border: 0;
+                border-radius: 5px;
+                background-color: #EAEAEA;
+                height: 30px;
+                color: #302F31;
+                font-size: 1.12rem;
+                outline: none;
+                border-bottom: 1px solid lighten($bg-color-1, 35%);
+                display: inline-block;
+                &:focus {
+                    background-color: #d9e8f9;
+                }
+            }
+            @include clearfix;
         }
     }
-    .body {
-        overflow-y: auto;
-        height: calc(100vh - #{$nav-height} - #{$new-note-height} - 2px);
-        
-        .note {
-            cursor: pointer;
-            min-height: 80px;
-            @extend %spacer;
-            padding: 14px;
-            margin: 0;
-            h3 {
-                font-size: 1.1rem;
-                margin-bottom: 5px;
-                color: $notes-title;
-                font-weight: 500;
-                @extend %ellipsis;
-                padding-right: 12px;
+    
+    .note {
+        cursor: pointer;
+        height: 74px;
+        @extend %spacer;
+        padding: 10px 14px;
+        margin: 0;
+        color: $notes-excerpt;
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: $notes-title;
+            font-weight: bold;
+            padding-right: 12px;
+            @extend %ellipsis;
+        }
+        p {
+            margin: 7px 0;
+            padding-right: 12px;
+            @extend %ellipsis;
+        }
+        .date {
+            margin: 2px 0 0;
+            float: left;
+            font-size: 0.9rem;
+        }
+        .action {
+            margin: 0 2px 0 15px;
+            float: right;
+            font-size: 1.3em;
+            visibility: hidden;
+            &:hover {
+                color: $white;
             }
-            p {
-                margin: 8px 0;
-                color: $notes-excerpt;
-                // @extend %ellipsis;
-                padding-right: 12px;
+        }
+        &.selected {
+            background-color: darken($bg-color-1, 20%);
+            &:hover {
+                background-color: darken($bg-color-1, 20%) !important;
             }
-            &.selected {
-                background-color: $bg-color-2;
-            }
-            ul {
-                max-height: 35px;
-                max-width: 250px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                li {
-                    display: inline-block;
-                    z-index: -999999999;
-                }
+        }
+        &:hover {
+            background-color: darken($bg-color-1, 7%);
+            .action {
+                visibility: visible;
             }
         }
     }
 }
 
-#notesview {
+#edit {
     height: 100vh;
-    min-width: calc(100% - 560px);
-    max-width: calc(100% - 560px);
-    width: auto;
-    width: auto;
+    width: 100%;
     background-color: $default-bg-preview-body;
-    float: left;
     color: $default-preview-text-color;
-    .header {
-        height: $nav-height;
+    #tags {
         background-color: $default-bg-preview-header;
-        a {
-            font-size: 1.4rem;
-            color: #767676;
+        .menu-toggle {
+            width: 60px;
+            height: $nav-height;
             float: left;
-            width: 40px;
-            height: 70px;
-            padding-left: 20px;
+            span {
+                cursor: pointer;
+                font-size: 24px;
+                color: #767676;
+                line-height: $nav-height;
+                margin: auto 20px;
+            }
+        }
+        ul {
+            @include borderbox;
+            padding-top: 15px;
+            float: left;
+            height: $nav-height;
+            max-width: calc(100% - #{$notespanel-width} - #{$actions-sidebar-width} - 65px);
+            @extend %ellipsis;
+            li {
+                margin-right: 10px;
+                display: inline-block;
+            }
         }
     }
     .body {
-        font-size: 1.1rem;
+        font-family: $font-editor;
         overflow-y: auto;
-        
-        // textarea {
-        //     font-size: 1.12rem;
-        //     padding: 15px 56px;
-        //     -webkit-box-sizing: border-box;
-        //     -moz-box-sizing: border-box;
-        //     box-sizing: border-box;
-        //     width: 100%;
-        //     border: 0;
-        //     resize: none;
-        //     height: calc(100vh - #{$nav-height});
-        //     outline: none;
-        //     overflow: none;
-        //     box-shadow: none;
-        //     background-color: $white;
-        // }
+        float: left;
+        width: calc(100% - #{$notespanel-width} - #{$actions-sidebar-width});
         input {
-            font-size: 1.55rem;
-            padding: 18px 56px 0;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
+            font-size: 1.45rem;
+            padding: 18px 56px 0;
             width: 100%;
             height: $input-title-height;
             border: 0;
@@ -221,7 +288,7 @@ ul {
             background-color: $white;
         }
         .content {
-            font-size: 1.12rem;
+            font-size: 1.1rem;
             padding: 14px 56px;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -234,17 +301,44 @@ ul {
             box-shadow: none;
             background-color: $white;
             border: 0;
+            cursor: text;
         }
         [contentEditable=true]:empty:before{
             content: attr(data-text);
             color: #b1a9a9;
         }
     }
-}
-
-#notesinfo {
-    float: right;
-    width: 280px;
-    height: 100vh;
-    background-color: $bg-info-body;
+    #actions-sidebar {
+        float: right;
+        width: $actions-sidebar-width;
+        height: calc(100vh - #{$nav-height});
+        background-color: $bg-info-body;
+        li {
+            text-align: center;
+            margin: 15px auto 10px;
+            display: table;
+        }
+        span {
+            cursor: pointer;
+            @include borderbox;
+            text-align: center;
+            padding: 8px;
+            border-radius: 50%;
+            height: 44px;
+            width: 44px;
+            font-size: 21px;
+            line-height: 1rem;
+            background-color: $white;
+            border: 1px solid #dcdcdc;
+            color: $blue;
+            vertical-align: middle;
+            display: table-cell;
+            margin: 0 auto;
+            &:hover {
+                background-color: $blue;
+                border-color: $blue;
+                color: $white;
+            }
+        }
+    }
 }

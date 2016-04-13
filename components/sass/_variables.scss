@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,500);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 
 $white:             #fff;
 
@@ -31,8 +32,8 @@ $notes-tag-name-selected:    #95999d;
 //unselected, top of notesview
 $notes-title:       #dee5ed;
 $notes-excerpt:     #8f959b;
-$notes-tag-border:  #6d7279;
-$notes-tag-name:    #a6abaf;
+$notes-tag-border:  #cfcfcf;
+$notes-tag-name:    #878481;
 $notes-spacer:      #4a5059;
 
 //notesinfo
@@ -49,12 +50,17 @@ $default-bg-preview-header: #f2f2f2;
 $default-bg-preview-body: $white;
 $default-preview-text-color: #212121;
 
-$nav-height:        70px;
-$new-note-height:   95px;
-$input-title-height: 58px;
+$nav-height:            65px;
+$nav-width:             75px;
+$tools-height:          30px;
+$input-title-height:    58px;
+$notespanel-width:      $nav-width * 4;
+$notesinfo-width:       280px;
+$actions-sidebar-width: 74px;
 
 $screen-small:  0;
 $screen-medium: 768px;
 $screen-large: 1300px;
 
-$font-main: "Roboto Mono", monospace;
+$font-main: "Source Sans Pro", Arial, sans-serif;
+$font-editor: "Roboto Mono", monospace;
