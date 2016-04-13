@@ -553,7 +553,7 @@ ul {
   height: 30px;
   width: 100px;
   float: right;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #4a90e2;
   color: #fff;
   text-align: center;
@@ -573,10 +573,33 @@ ul {
   float: left;
   color: #fff;
   margin-top: 5px;
+  position: relative;
 }
 
 #panel #notes .tools .sort span {
-  margin: auto 6px;
+  margin: auto 5px;
+}
+
+#panel #notes .tools .sort ul {
+  text-align: left;
+  display: none;
+  z-index: 20;
+  position: absolute;
+  height: 120px;
+  width: 130px;
+  background-color: #474747;
+  top: 22px;
+  font-size: 1.14rem;
+  color: #dee5ed;
+  font-weight: bold;
+  line-height: 2.2rem;
+  border: 1px solid #616161;
+  padding: 8px 13px;
+  box-shadow: 0 2px 17px 2px black;
+}
+
+#panel #notes .tools .sort:hover ul {
+  display: block;
 }
 
 #panel #notes .tools input {
