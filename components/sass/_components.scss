@@ -9,6 +9,10 @@
     text-overflow: ellipsis;
 }
 
+%spacer {
+    border-bottom: 2px solid $notes-spacer;
+}
+
 * {
     // -webkit-transition: margin 200ms linear;
     //    -moz-transition: margin 200ms linear;
@@ -31,8 +35,7 @@
 html {
     font-size: 14px;
     font-family: $font-main;
-    background-color: $bg-color-1;
-    color: #eee;
+    color: #343434;
     overflow: hidden;
 }
 
@@ -56,8 +59,8 @@ ul {
     width: auto;
     text-align: center;
     display: inline-block;
-    line-height: 1em;
-    font-size: 0.85rem;
+    line-height: 0.9em;
+    font-size: 0.9rem;
     
     .selected {
         border: 2px solid $notes-tag-border-selected; 
@@ -70,23 +73,23 @@ ul {
     }
 }
 
-%spacer {
-    border-bottom: 2px solid $notes-spacer;
+.header {
+    height: $nav-height;
 }
 
-#notespanel {
-    width: $nav-width * 4;
+#panel {
+    background-color: $bg-color-1;
+    width: $nav-width*4;
     height: 100vh;
     float: left;
     
-    .header {
-        height: $nav-height;
+    #tabs {
         background-color: $bg-color-2;
         li {
             float: left;
             width: $nav-width;
             height: $nav-height;
-            font-size: 24px;
+            font-size: 22px;
             text-align: center;
             position: relative;
             &.selected {
@@ -95,9 +98,9 @@ ul {
                 }
                 background-color: $bg-color-1;
             }
-            .glyphicon {
+            .fa {
                 color: #cdcdcf;
-                margin-top: 28px;
+                margin-top: 23px;
                 &:hover {
                     color: $white;
                 }
@@ -110,8 +113,6 @@ ul {
                 padding: 4px 6px;
                 border-radius: 3px;
                 font-size: 0.48em;
-            
-                /* Position the tooltip text - see examples below! */
                 position: absolute;
                 top: 10px;
                 left: 45px;
@@ -120,122 +121,172 @@ ul {
             }
             a:hover .tooltiptext {
                 visibility: visible;
-                transition-delay: 1s;
+                transition-delay: 650ms;
             }
         }
     }
     
-    .newnote {
-        height: $new-note-height;
-        position: relative;
-        @extend %spacer;
-        .btn {
-            width: 200px;
-            border-radius: 5px;
-            background-color: $special-button;
-            color: $white;
-            padding: 15px;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateY(-50%) translateX(-50%);
-            cursor: pointer;
-        }
-    }
     .body {
         overflow-y: auto;
-        height: calc(100vh - #{$nav-height} - #{$new-note-height} - 2px);
-        
-        .note {
-            cursor: pointer;
-            min-height: 80px;
+        height: calc(100vh - #{$nav-height} - (2 * #{$tools-height}) - 50px);
+    }
+    .currentpanel {
+        display: block !important;
+    }
+    
+    #notes {
+        display: none;
+        .tools {
+            text-align: center;
+            padding: 12px;
+            height: $tools-height;
             @extend %spacer;
-            padding: 14px;
-            margin: 0;
-            color: $notes-excerpt;
-            h3 {
-                font-size: 1.2rem;
-                margin-bottom: 5px;
-                color: $notes-title;
-                font-weight: bold;
-                @extend %ellipsis;
-                padding-right: 12px;
+            &:last-of-type {
+                border-top: 1px solid $notes-spacer;
             }
-            p {
-                margin: 7px 0;
-                @extend %ellipsis;
-                padding-right: 12px;
+            .newnote {
+                @include borderbox;
+                height: 30px;
+                width: 100px;
+                float: right;
+                border-radius: 5px;
+                background-color: $special-button;
+                color: $white;
+                text-align: center;
+                cursor: pointer;
+                padding-top: 0;
+                font-size: 0.9rem;
+                font-weight: 400;
+                // font-family: 'Roboto Mono';
+                line-height: 29px;
+                
+                &:hover {
+                    background-color: darken($special-button, 6%);
+                }
             }
-            .date {
+            .sort {
+                cursor: pointer;
+                float: left;
+                color: $white;
+                margin-top: 5px;
+                span {
+                    margin: auto 6px;
+                }
+            }
+            input {
+                @include borderbox;
+                padding: 8px 13px;
+                width: 100%;
+                border: 0;
+                border-radius: 5px;
+                background-color: #EAEAEA;
+                height: 30px;
+                color: #302F31;
+                font-size: 1.12rem;
+                outline: none;
+                border-bottom: 1px solid lighten($bg-color-1, 35%);
                 display: inline-block;
-                margin: 5px 0 0;
+                &:focus {
+                    background-color: #d9e8f9;
+                }
             }
-            &.selected {
-                background-color: $bg-color-2;
+            @include clearfix;
+        }
+    }
+    
+    .note {
+        cursor: pointer;
+        min-height: 80px;
+        @extend %spacer;
+        padding: 10px 14px;
+        margin: 0;
+        color: $notes-excerpt;
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: $notes-title;
+            font-weight: bold;
+            padding-right: 12px;
+            @extend %ellipsis;
+        }
+        p {
+            margin: 7px 0;
+            padding-right: 12px;
+            @extend %ellipsis;
+        }
+        .date {
+            margin: 5px 0 0;
+            float: left;
+            font-size: 0.9rem;
+        }
+        .action {
+            margin: 4px 2px 0 15px;
+            float: right;
+            font-size: 1.3em;
+            visibility: hidden;
+            &:hover {
+                color: $white;
             }
-            // ul {
-            //     max-height: 35px;
-            //     max-width: 250px;
-            //     white-space: nowrap;
-            //     overflow: hidden;
-            //     text-overflow: ellipsis;
-            //     li {
-            //         display: inline-block;
-            //         z-index: -999999999;
-            //     }
-            // }
+        }
+        &.selected {
+            background-color: darken($bg-color-1, 20%);
+            &:hover {
+                background-color: darken($bg-color-1, 20%) !important;
+            }
+        }
+        &:hover {
+            background-color: darken($bg-color-1, 10%);
+            .action {
+                visibility: visible;
+            }
         }
     }
 }
 
-#notesedit {
+#edit {
     height: 100vh;
-    min-width: calc(100% - #{$notespanel-width} - #{$notesinfo-width});
-    max-width: calc(100% - #{$notespanel-width} - #{$notesinfo-width});
-    width: auto;
-    width: auto;
+    width: 100%;
+    // width: calc(100% - #{$notespanel-width});
     background-color: $default-bg-preview-body;
-    float: left;
     color: $default-preview-text-color;
-    .header {
-        height: $nav-height;
+    #tags {
         background-color: $default-bg-preview-header;
-        a {
-            font-size: 1.4rem;
-            color: #767676;
-            float: left;
-            width: 40px;
-            height: 70px;
-            padding-left: 20px;
+        ul {
+            margin-top: 15px;
+            margin-left: 15px;
+            display: inline-block;
+            height: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            li {
+                margin-right: 10px;
+                display: inline-block;
+            }
+            .menu-toggle {
+                width: 24px;
+                height: 24px;
+                margin-right: 15px;
+                span {
+                    cursor: pointer;
+                    font-size: 24px;
+                    color: #767676;
+                }
+            }
         }
     }
     .body {
         font-family: $font-editor;
         overflow-y: auto;
-        
-        // textarea {
-        //     font-size: 1.12rem;
-        //     padding: 15px 56px;
-        //     -webkit-box-sizing: border-box;
-        //     -moz-box-sizing: border-box;
-        //     box-sizing: border-box;
-        //     width: 100%;
-        //     border: 0;
-        //     resize: none;
-        //     height: calc(100vh - #{$nav-height});
-        //     outline: none;
-        //     overflow: none;
-        //     box-shadow: none;
-        //     background-color: $white;
-        // }
+        float: left;
+        width: calc(100% - #{$notespanel-width} - #{$actions-sidebar-width});
         input {
-            font-size: 1.45rem;
-            // font-size: 1.65rem;
-            padding: 18px 56px 0;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
+            font-size: 1.45rem;
+            // font-size: 1.65rem;
+            padding: 18px 56px 0;
             width: 100%;
             height: $input-title-height;
             border: 0;
@@ -260,17 +311,44 @@ ul {
             box-shadow: none;
             background-color: $white;
             border: 0;
+            cursor: text;
         }
         [contentEditable=true]:empty:before{
             content: attr(data-text);
             color: #b1a9a9;
         }
     }
-}
-
-#notesinfo {
-    float: right;
-    width: $notesinfo-width;
-    height: 100vh;
-    background-color: $bg-info-body;
+    #actions-sidebar {
+        float: right;
+        width: $actions-sidebar-width;
+        height: calc(100vh - #{$nav-height});
+        background-color: $bg-info-body;
+        li {
+            text-align: center;
+            margin: 15px auto 10px;
+            display: table;
+        }
+        span {
+            cursor: pointer;
+            @include borderbox;
+            text-align: center;
+            padding: 8px;
+            border-radius: 50%;
+            height: 44px;
+            width: 44px;
+            font-size: 21px;
+            line-height: 1rem;
+            background-color: $white;
+            border: 1px solid #dcdcdc;
+            color: $blue;
+            vertical-align: middle;
+            display: table-cell;
+            margin: 0 auto;
+            &:hover {
+                background-color: $blue;
+                border-color: $blue;
+                color: $white;
+            }
+        }
+    }
 }

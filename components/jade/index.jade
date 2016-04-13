@@ -11,83 +11,79 @@ html
     include ./includes/head
     body
         //notes list / search / settings panel
-        section#notespanel
-            .header
+        section#panel
+            #tabs.header
                 ul
                     li.selected
                         a(href="#")
-                            span.glyphicon.glyphicon-notes
+                            span.fa.fa-file-text-o
                             span.tooltiptext Notes
                     li
                         a(href="#")
-                            span.glyphicon.glyphicon-search
-                            span.tooltiptext Search
-                    li
-                        a(href="#")
-                            span.glyphicon.glyphicon-tag
+                            span.fa.fa-tags
                             span.tooltiptext Tags
                     li
                         a(href="#")
-                            span.glyphicon.glyphicon-cogwheel
+                            span.fa.fa-cog
                             span.tooltiptext Preferences
-            .newnote
-                .btn New Note
-            .body
-                .note
-                    h3 Note Title ippet ksldjf lsk sdlfks 
-                    p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...
-                    ul
-                        li.tag: span Work
-                        li.tag: span programming
-                .note.selected
-                    h3 Note Title
-                    p note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...
-                    span.date May 3, 2016
-                .note
-                    h3 Note Title something else goes ehre
-                    p note snippet 1234567890-1234567890-1234567890-lssldkjf laks dlfaksj dflkasj dflkas djflaks ...
-                    p 03/25/2016
-                .note
-                    h3 Untitled
-                    p note snippet...
-                    ul
-                        li.tag: span Work
-                        li.tag: span !
-                        li.tag: span cooking
-                .note
-                    h3 Movies
-                    p this is a movie note...
-                    ul
-                        li.tag: span Movies
-                        li.tag: span haha
-                .note
-                    h3 Note Title
-                    p note snippet...
-                    ul
-                        li.tag: span Work
-                        li.tag: span Reading
-                        li.tag: span ha
-                        li.tag: span you
-        //note preview
-        section#notesedit
-            .header
-                a(href="#"): span.glyphicon.glyphicon-show_lines
+                    li
+                        a(href="#")
+                            span.fa.fa-trash-o
+                            span.tooltiptext Trash
+            #notes.currentpanel
+                .tools
+                    .newnote New Note
+                    .sort Sort
+                        span.fa.fa-caret-down
+                .body
+                    // .note.selected
+                    //     h3 Note Title ippet ksldjf lsk sdlfks 
+                    //     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...
+                    //     ul
+                    //         li.tag: span Work1234560
+                    //         li.tag: span programming
+                    //         li.tag: span development
+                    .note
+                        h3 Note Title something else goes ehre
+                        p something here.
+                        span.date Jul 4, 2015
+                        span.action.fa.fa-trash-o
+                        span.action.fa.fa-envelope-o
+                    .note.selected
+                        h3 Note Title something else goes ehre
+                        p something here lkasjdf;kas lkj;adadsf.
+                        span.date Jul 4, 2015
+                        span.action.fa.fa-trash-o
+                        span.action.fa.fa-envelope-o
+                .tools
+                    input(type="text")
+            // #tags
+            // #settings        
+        section#edit
+            #tags.header
                 ul
-                    li.tag Tag1
-                    li.tag Tag2
+                    li.menu-toggle: span.fa.fa-bars
+                    li.tag: span Add tag
+                    li.tag: span Ideas
+                    li.tag: span Work
+                    li.tag: span Work1
+                    li.tag: span Work2
+                    li.tag: span Work3
+                    li.tag: span Work4
+                    li.tag: span Work5
+                    // li.tag: span Work6
+                    // li.tag: span Work7
+                    // li.tag: span Work8
+                    // li.tag: span Work9
+                    // li.tag: span Work10
+                    // li.tag: span Work11
+                    // li.tag: span Work1112
             .body
-                input(placeholder="Add a title..." value="Untitled")
+                input(placeholder="Add a title...")
                 div.content(contenteditable="true" data-text="Enter text here")
-        
-        //notes info
-        section#notesinfo
-            .header
-                span.glyphicon.glyphicon-circle_info
-                span.glyphicon.glyphicon-justify
-                span.glyphicon.glyphicon-show_lines
-            .body
+            #actions-sidebar
                 ul
-                    li.btn Publish
-                    li.btn Share
-                    li.btn Delete
+                    li: span.action.fa.fa-floppy-o
+                    li: span.action.fa.fa-envelope-o
+                    li: span.action.fa.fa-trash-o
                     
