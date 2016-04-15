@@ -25,7 +25,7 @@ if(env==='development') {
 	htmlPretty = false;
 }
     
-var jsSources = ['components/scripts/smooth-scroll.js', 'components/scripts/script.js'],
+var jsSources = ['components/scripts/*.js'],
     sassSources = ['components/sass/style.scss'],
     jadeSources = ['components/jade/*.jade'];
 
@@ -59,6 +59,6 @@ gulp.task('jade', function() {
     .pipe(gulp.dest(outputDir))
 });
 
-gulp.task('default', ['jade', 'sass']);
+gulp.task('default', ['jade', 'sass', 'js']);
 // gulp.task('default', ['js', 'sass', 'jade', 'html']);
     
