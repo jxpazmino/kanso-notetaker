@@ -28,7 +28,15 @@ html {
     font-size: 14px;
     font-family: $font-main;
     color: #343434;
-    overflow: hidden;
+    background-color: $baby-blue;
+}
+
+.app-container {
+    max-width: 1380px;
+    margin: 20px auto;
+    min-height: 500px;
+    height: calc(100vh - 40px);
+    // overflow: hidden;
 }
 
 a {
@@ -71,8 +79,8 @@ ul {
 
 #panel {
     background-color: $bg-color-1;
-    width: $nav-width*4;
-    height: 100vh;
+    width: $panel-width;
+    height: 100%;
     float: left;
     
     #tabs {
@@ -120,13 +128,13 @@ ul {
     
     .body {
         overflow-y: scroll;
-        height: calc(100vh - #{$nav-height} - #{$tools-height} - 26px);
+        height: calc(100vh - #{$nav-height} - #{$tools-height} - 66px);
     }
     .currentpanel {
         display: block !important;
     }
     
-    #notes {
+    #noteslist {
         display: none;
         .tools {
             text-align: center;
@@ -210,7 +218,7 @@ ul {
     }
     
     .note {
-        cursor: pointer;
+        cursor: default;
         height: 74px;
         @extend %spacer;
         padding: 10px 14px;
@@ -239,6 +247,7 @@ ul {
             float: right;
             font-size: 1.3em;
             visibility: hidden;
+            cursor: pointer;
             &:hover {
                 color: $white;
             }
@@ -259,8 +268,10 @@ ul {
 }
 
 #edit {
-    height: 100vh;
-    width: 100%;
+    // position: relative;
+    height: 100%;
+    width: calc(100% - $panel-width);
+    background-color: red;
     background-color: $default-bg-preview-body;
     color: $default-preview-text-color;
     #tags {
@@ -282,7 +293,7 @@ ul {
             padding-top: 15px;
             float: left;
             height: $nav-height;
-            max-width: calc(100% - #{$notespanel-width} - #{$actions-sidebar-width} - 65px);
+            max-width: calc(100% - #{$notespanel-width} - 65px);
             @extend %ellipsis;
             li {
                 margin-right: 10px;
@@ -290,11 +301,12 @@ ul {
             }
         }
     }
-    .body {
+    #edit-body {
         font-family: $font-editor;
         overflow-y: auto;
         float: left;
-        width: calc(100% - #{$notespanel-width} - #{$actions-sidebar-width});
+        height: calc(100% - #{$nav-height});
+        width: calc(100% - #{$notespanel-width});
         input {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -318,7 +330,7 @@ ul {
             box-sizing: border-box;
             width: 100%;
             resize: none;
-            height: calc(100vh - #{$nav-height} - #{$input-title-height});
+            height: calc(100% - #{$nav-height} - #{$input-title-height});
             outline: none;
             overflow: none;
             box-shadow: none;
@@ -334,7 +346,7 @@ ul {
     #actions-sidebar {
         float: right;
         width: $actions-sidebar-width;
-        height: calc(100vh - #{$nav-height});
+        height: calc(100% - #{$nav-height});
         background-color: $bg-info-body;
         li {
             text-align: center;

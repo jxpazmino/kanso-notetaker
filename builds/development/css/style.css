@@ -410,7 +410,7 @@ th {
   text-overflow: ellipsis;
 }
 
-#panel #notes .tools, #panel .note {
+#panel #noteslist .tools, #panel .note {
   border-bottom: 2px solid #4a5059;
 }
 
@@ -425,7 +425,14 @@ html {
   font-size: 14px;
   font-family: "Source Sans Pro", Arial, sans-serif;
   color: #343434;
-  overflow: hidden;
+  background-color: #cbdaec;
+}
+
+.app-container {
+  max-width: 1380px;
+  margin: 20px auto;
+  min-height: 500px;
+  height: calc(100vh - 40px);
 }
 
 a {
@@ -466,19 +473,10 @@ ul {
   height: 65px;
 }
 
-header {
-  height: 30px;
-  color: white;
-  font-size: 12px;
-  line-height: 30px;
-  background-color: black;
-  width: 100%;
-}
-
 #panel {
   background-color: #333;
   width: 300px;
-  height: 100vh;
+  height: 100%;
   float: left;
 }
 
@@ -534,28 +532,28 @@ header {
 
 #panel .body {
   overflow-y: scroll;
-  height: calc(100vh - 65px - 30px - 26px);
+  height: calc(100vh - 65px - 30px - 66px);
 }
 
 #panel .currentpanel {
   display: block !important;
 }
 
-#panel #notes {
+#panel #noteslist {
   display: none;
 }
 
-#panel #notes .tools {
+#panel #noteslist .tools {
   text-align: center;
   padding: 12px;
   height: 30px;
 }
 
-#panel #notes .tools:last-of-type {
+#panel #noteslist .tools:last-of-type {
   border-top: 1px solid #4a5059;
 }
 
-#panel #notes .tools .newnote {
+#panel #noteslist .tools .newnote {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -573,11 +571,11 @@ header {
   line-height: 29px;
 }
 
-#panel #notes .tools .newnote:hover {
+#panel #noteslist .tools .newnote:hover {
   background-color: #3080de;
 }
 
-#panel #notes .tools .sort {
+#panel #noteslist .tools .sort {
   cursor: pointer;
   float: left;
   color: #fff;
@@ -585,11 +583,11 @@ header {
   position: relative;
 }
 
-#panel #notes .tools .sort span {
+#panel #noteslist .tools .sort span {
   margin: auto 5px;
 }
 
-#panel #notes .tools .sort ul {
+#panel #noteslist .tools .sort ul {
   text-align: left;
   display: none;
   z-index: 20;
@@ -607,11 +605,11 @@ header {
   box-shadow: 0 2px 17px 2px black;
 }
 
-#panel #notes .tools .sort:hover ul {
+#panel #noteslist .tools .sort:hover ul {
   display: block;
 }
 
-#panel #notes .tools input {
+#panel #noteslist .tools input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -628,21 +626,21 @@ header {
   display: inline-block;
 }
 
-#panel #notes .tools input:focus {
+#panel #noteslist .tools input:focus {
   background-color: #d9e8f9;
 }
 
-#panel #notes .tools:before, #panel #notes .tools:after {
+#panel #noteslist .tools:before, #panel #noteslist .tools:after {
   content: '';
   display: table;
 }
 
-#panel #notes .tools:after {
+#panel #noteslist .tools:after {
   clear: both;
 }
 
 #panel .note {
-  cursor: pointer;
+  cursor: default;
   height: 74px;
   padding: 10px 14px;
   margin: 0;
@@ -673,6 +671,7 @@ header {
   float: right;
   font-size: 1.3em;
   visibility: hidden;
+  cursor: pointer;
 }
 
 #panel .note .action:hover {
@@ -696,8 +695,9 @@ header {
 }
 
 #edit {
-  height: 100vh;
-  width: 100%;
+  height: 100%;
+  width: calc(100% - $panel-width);
+  background-color: red;
   background-color: #fff;
   color: #212121;
 }
@@ -727,7 +727,7 @@ header {
   padding-top: 15px;
   float: left;
   height: 65px;
-  max-width: calc(100% - 300px - 74px - 65px);
+  max-width: calc(100% - 300px - 65px);
 }
 
 #edit #tags ul li {
@@ -735,14 +735,15 @@ header {
   display: inline-block;
 }
 
-#edit .body {
+#edit #edit-body {
   font-family: "Roboto Mono", monospace;
   overflow-y: auto;
   float: left;
-  width: calc(100% - 300px - 74px);
+  height: calc(100% - 65px);
+  width: calc(100% - 300px);
 }
 
-#edit .body input {
+#edit #edit-body input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -758,7 +759,7 @@ header {
   background-color: #fff;
 }
 
-#edit .body .content {
+#edit #edit-body .content {
   font-size: 1.1rem;
   padding: 14px 56px;
   -webkit-box-sizing: border-box;
@@ -766,7 +767,7 @@ header {
   box-sizing: border-box;
   width: 100%;
   resize: none;
-  height: calc(100vh - 65px - 58px);
+  height: calc(100% - 65px - 58px);
   outline: none;
   overflow: none;
   box-shadow: none;
@@ -775,7 +776,7 @@ header {
   cursor: text;
 }
 
-#edit .body [contentEditable=true]:empty:before {
+#edit #edit-body [contentEditable=true]:empty:before {
   content: attr(data-text);
   color: #b1a9a9;
 }
@@ -783,7 +784,7 @@ header {
 #edit #actions-sidebar {
   float: right;
   width: 74px;
-  height: calc(100vh - 65px);
+  height: calc(100% - 65px);
   background-color: #d9e8f9;
 }
 

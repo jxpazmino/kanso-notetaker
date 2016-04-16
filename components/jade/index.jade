@@ -10,117 +10,118 @@ html
     include ./includes/head
     body
         //notes list / search / settings panel
-        section#panel
-            #tabs.header
-                ul
-                    li.selected
-                        a(href="#")
-                            span.fa.fa-file-text-o
-                            span.tooltiptext Notes
-                    li
-                        a(href="#")
-                            span.fa.fa-search
-                            span.tooltiptext Search
-                    li
-                        a(href="#")
-                            span.fa.fa-tags
-                            span.tooltiptext Tags
-                    li
-                        a(href="#")
-                            span.fa.fa-cog
-                            span.tooltiptext Preferences
-            #notes.currentpanel
-                .tools
-                    .newnote New Note
-                    .sort Sort
-                        span.fa.fa-caret-down
-                        ul
-                            li Title (ascending)
-                            li Title (descending)
-                            li Newest first
-                            li Oldest first
-                .body
-                    // .note.selected
-                    //     h3 Note Title ippet ksldjf lsk sdlfks 
-                    //     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...
-                    //     ul
-                    //         li.tag: span Work1234560
-                    //         li.tag: span programming
-                    //         li.tag: span development
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.sjda fklajslk lsjdl   slkd
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note.selected
-                        h3 Note Title something else goes ehre
-                        p something here. lsdkj f;lksd jf;askl dfj;alks dfj;alks
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                    .note
-                        h3 Note Title something else goes ehre
-                        p something here.
-                        span.date Jul 4, 2015
-                        span.action.fa.fa-trash-o
-                        span.action.fa.fa-envelope-o
-                // .tools
-                //     input(type="text")
-            // #tags
-            // #settings        
-        section#edit
-            #tags.header
-                .menu-toggle: span.fa.fa-bars
-                ul
-                    li.tag: span Ideas
-                    li.tag: span Work
-                    li.tag: span programming
-                    li.tag: span +
-            .body
-                input(placeholder="Add a title...")
-                div.content(contenteditable="true" data-text="Enter text here")
-            #actions-sidebar
-                ul
-                    li: span.action.fa.fa-floppy-o
-                    li: span.action.fa.fa-envelope-o
-                    li: span.action.fa.fa-trash-o
+        .app-container
+            section#panel
+                #tabs.header
+                    ul
+                        li.selected
+                            a(href="#")
+                                span.fa.fa-file-text-o
+                                span.tooltiptext Notes
+                        li
+                            a(href="#")
+                                span.fa.fa-search
+                                span.tooltiptext Search
+                        li
+                            a(href="#")
+                                span.fa.fa-tags
+                                span.tooltiptext Tags
+                        li
+                            a(href="#")
+                                span.fa.fa-cog
+                                span.tooltiptext Preferences
+                #noteslist.currentpanel
+                    .tools
+                        .sort Sort
+                            span.fa.fa-caret-down
+                            ul
+                                li Title (ascending)
+                                li Title (descending)
+                                li Newest first
+                                li Oldest first
+                        .newnote New Note
+                    .body
+                        // .note.selected
+                        //     h3 Note Title ippet ksldjf lsk sdlfks 
+                        //     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...
+                        //     ul
+                        //         li.tag: span Work1234560
+                        //         li.tag: span programming
+                        //         li.tag: span development
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.sjda fklajslk lsjdl   slkd
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note.selected
+                            h3 Note Title something else goes ehre
+                            p something here. lsdkj f;lksd jf;askl dfj;alks dfj;alks
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                        .note
+                            h3 Note Title something else goes ehre
+                            p something here.
+                            span.date Jul 4, 2015
+                            span.action.fa.fa-trash-o
+                            span.action.fa.fa-envelope-o
+                    // .tools
+                    //     input(type="text")
+                // #tags
+                // #settings        
+            section#edit
+                #tags.header
+                    // .menu-toggle: span.fa.fa-bars
+                    ul
+                        li.tag: span Ideas
+                        li.tag: span Work
+                        li.tag: span programming
+                        li.tag: span +
+                #edit-body
+                    input(placeholder="Add a title...")
+                    .content(contenteditable="true" data-text="Enter text here")
+                // #actions-sidebar
+                //     ul
+                //         li: span.action.fa.fa-floppy-o
+                //         li: span.action.fa.fa-envelope-o
+                //         li: span.action.fa.fa-trash-o
     script(src="js/angular.min.js") 
     script(src="js/bundle.js") 
                     
