@@ -32,11 +32,19 @@ html {
 }
 
 .app-container {
-    max-width: 1380px;
+    max-width: 1300px;
     margin: 20px auto;
     min-height: 500px;
-    height: calc(100vh - 40px);
-    // overflow: hidden;
+    overflow: hidden;
+    box-shadow: 0 4px 12px #545454;
+    @include mobile {
+        margin: 0 auto;
+        height: 100vh;
+    }
+    @include desktop {
+        margin: 20px auto;
+        height: calc(100vh - 40px);
+    }
 }
 
 a {
@@ -74,7 +82,7 @@ ul {
 }
 
 .header {
-    height: $nav-height;
+    height: $header-height;
 }
 
 #panel {
@@ -88,7 +96,7 @@ ul {
         li {
             float: left;
             width: $nav-width;
-            height: $nav-height;
+            height: $header-height;
             font-size: 22px;
             text-align: center;
             position: relative;
@@ -128,7 +136,7 @@ ul {
     
     .body {
         overflow-y: scroll;
-        height: calc(100vh - #{$nav-height} - #{$tools-height} - 66px);
+        height: calc(100vh - #{$header-height} - #{$sub-header-height} - 42px);
     }
     .currentpanel {
         display: block !important;
@@ -138,8 +146,7 @@ ul {
         display: none;
         .tools {
             text-align: center;
-            padding: 12px;
-            height: $tools-height;
+            height: $sub-header-height;
             @extend %spacer;
             &:last-of-type {
                 border-top: 1px solid $notes-spacer;
@@ -147,19 +154,17 @@ ul {
             .newnote {
                 @include borderbox;
                 height: 30px;
-                width: 100px;
+                width: 120px;
                 float: right;
                 border-radius: 3px;
                 background-color: $special-button;
                 color: $white;
                 text-align: center;
                 cursor: pointer;
-                padding-top: 0;
                 font-size: 0.9rem;
                 font-weight: 400;
-                // font-family: 'Roboto Mono';
                 line-height: 29px;
-                
+                margin: 10px;
                 &:hover {
                     background-color: darken($special-button, 6%);
                 }
@@ -196,23 +201,23 @@ ul {
                     }
                 }
             }
-            input {
-                @include borderbox;
-                padding: 8px 13px;
-                width: 100%;
-                border: 0;
-                border-radius: 5px;
-                background-color: #EAEAEA;
-                height: 30px;
-                color: #302F31;
-                font-size: 1.12rem;
-                outline: none;
-                border-bottom: 1px solid lighten($bg-color-1, 35%);
-                display: inline-block;
-                &:focus {
-                    background-color: #d9e8f9;
-                }
-            }
+            // input {
+            //     @include borderbox;
+            //     padding: 8px 13px;
+            //     width: 100%;
+            //     border: 0;
+            //     border-radius: 5px;
+            //     background-color: #EAEAEA;
+            //     height: 30px;
+            //     color: #302F31;
+            //     font-size: 1.12rem;
+            //     outline: none;
+            //     border-bottom: 1px solid lighten($bg-color-1, 35%);
+            //     display: inline-block;
+            //     &:focus {
+            //         background-color: #d9e8f9;
+            //     }
+            // }
             @include clearfix;
         }
     }
@@ -271,20 +276,19 @@ ul {
     // position: relative;
     height: 100%;
     width: calc(100% - $panel-width);
-    background-color: red;
     background-color: $default-bg-preview-body;
     color: $default-preview-text-color;
     #tags {
         background-color: $default-bg-preview-header;
         .menu-toggle {
             width: 60px;
-            height: $nav-height;
+            height: $header-height;
             float: left;
             span {
                 cursor: pointer;
                 font-size: 24px;
                 color: #767676;
-                line-height: $nav-height;
+                line-height: $header-height;
                 margin: auto 20px;
             }
         }
@@ -292,7 +296,7 @@ ul {
             @include borderbox;
             padding-top: 15px;
             float: left;
-            height: $nav-height;
+            height: $header-height;
             max-width: calc(100% - #{$notespanel-width} - 65px);
             @extend %ellipsis;
             li {
@@ -303,26 +307,26 @@ ul {
     }
     #edit-body {
         font-family: $font-editor;
-        overflow-y: auto;
+        overflow-y: hidden;
         float: left;
-        height: calc(100% - #{$nav-height});
+        height: calc(100% - #{$header-height});
         width: calc(100% - #{$notespanel-width});
+        background-color: $white;
         input {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
+            @include borderbox;
             font-size: 1.45rem;
-            padding: 18px 56px 0;
+            padding: 0 56px;
             width: 100%;
-            height: $input-title-height;
-            border: 0;
+            height: calc($sub-header-height + 2px);
+            line-height: $sub-header-height;
             font-weight: 500;
             outline: none;
             overflow: none;
             box-shadow: none;
-            background-color: $white;
+            border: 0;
+            border-bottom: 2px solid $default-bg-preview-header;
         }
-        .content {
+        textarea {
             font-size: 1.1rem;
             padding: 14px 56px;
             -webkit-box-sizing: border-box;
@@ -330,7 +334,8 @@ ul {
             box-sizing: border-box;
             width: 100%;
             resize: none;
-            height: calc(100% - #{$nav-height} - #{$input-title-height});
+            overflow-y: scroll;
+            height: calc(100% - #{$header-height} + 14px);
             outline: none;
             overflow: none;
             box-shadow: none;
@@ -346,7 +351,7 @@ ul {
     #actions-sidebar {
         float: right;
         width: $actions-sidebar-width;
-        height: calc(100% - #{$nav-height});
+        height: calc(100% - #{$header-height});
         background-color: $bg-info-body;
         li {
             text-align: center;

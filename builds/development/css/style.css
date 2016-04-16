@@ -429,10 +429,25 @@ html {
 }
 
 .app-container {
-  max-width: 1380px;
+  max-width: 1300px;
   margin: 20px auto;
   min-height: 500px;
-  height: calc(100vh - 40px);
+  overflow: hidden;
+  box-shadow: 0 4px 12px #545454;
+}
+
+@media (min-width: 0) {
+  .app-container {
+    margin: 0 auto;
+    height: 100vh;
+  }
+}
+
+@media (min-width: 1300px) {
+  .app-container {
+    margin: 20px auto;
+    height: calc(100vh - 40px);
+  }
 }
 
 a {
@@ -532,7 +547,7 @@ ul {
 
 #panel .body {
   overflow-y: scroll;
-  height: calc(100vh - 65px - 30px - 66px);
+  height: calc(100vh - 65px - 50px - 42px);
 }
 
 #panel .currentpanel {
@@ -545,8 +560,7 @@ ul {
 
 #panel #noteslist .tools {
   text-align: center;
-  padding: 12px;
-  height: 30px;
+  height: 50px;
 }
 
 #panel #noteslist .tools:last-of-type {
@@ -558,17 +572,17 @@ ul {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: 30px;
-  width: 100px;
+  width: 120px;
   float: right;
   border-radius: 3px;
   background-color: #4a90e2;
   color: #fff;
   text-align: center;
   cursor: pointer;
-  padding-top: 0;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 29px;
+  margin: 10px;
 }
 
 #panel #noteslist .tools .newnote:hover {
@@ -607,27 +621,6 @@ ul {
 
 #panel #noteslist .tools .sort:hover ul {
   display: block;
-}
-
-#panel #noteslist .tools input {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 8px 13px;
-  width: 100%;
-  border: 0;
-  border-radius: 5px;
-  background-color: #EAEAEA;
-  height: 30px;
-  color: #302F31;
-  font-size: 1.12rem;
-  outline: none;
-  border-bottom: 1px solid #8c8c8c;
-  display: inline-block;
-}
-
-#panel #noteslist .tools input:focus {
-  background-color: #d9e8f9;
 }
 
 #panel #noteslist .tools:before, #panel #noteslist .tools:after {
@@ -697,7 +690,6 @@ ul {
 #edit {
   height: 100%;
   width: calc(100% - $panel-width);
-  background-color: red;
   background-color: #fff;
   color: #212121;
 }
@@ -737,10 +729,11 @@ ul {
 
 #edit #edit-body {
   font-family: "Roboto Mono", monospace;
-  overflow-y: auto;
+  overflow-y: hidden;
   float: left;
   height: calc(100% - 65px);
   width: calc(100% - 300px);
+  background-color: #fff;
 }
 
 #edit #edit-body input {
@@ -748,18 +741,19 @@ ul {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 1.45rem;
-  padding: 18px 56px 0;
+  padding: 0 56px;
   width: 100%;
-  height: 58px;
-  border: 0;
+  height: calc($sub-header-height + 2px);
+  line-height: 50px;
   font-weight: 500;
   outline: none;
   overflow: none;
   box-shadow: none;
-  background-color: #fff;
+  border: 0;
+  border-bottom: 2px solid #f2f2f2;
 }
 
-#edit #edit-body .content {
+#edit #edit-body textarea {
   font-size: 1.1rem;
   padding: 14px 56px;
   -webkit-box-sizing: border-box;
@@ -767,7 +761,8 @@ ul {
   box-sizing: border-box;
   width: 100%;
   resize: none;
-  height: calc(100% - 65px - 58px);
+  overflow-y: scroll;
+  height: calc(100% - 65px + 14px);
   outline: none;
   overflow: none;
   box-shadow: none;
