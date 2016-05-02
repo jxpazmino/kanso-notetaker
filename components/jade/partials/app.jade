@@ -1,0 +1,85 @@
+.app-container
+    section#panel
+        #tabs.header
+            ul
+                li.selected
+                    a(href="#")
+                        span.fa.fa-file-text-o
+                        span.tooltiptext Notes
+                li
+                    a(href="#")
+                        span.fa.fa-search
+                        span.tooltiptext Search
+                li
+                    a(href="#")
+                        span.fa.fa-tags
+                        span.tooltiptext Tags
+                li
+                    a(href="#")
+                        span.fa.fa-cog
+                        span.tooltiptext Preferences
+        #noteslist.currentpanel
+            #tools
+                .sort Sort
+                    span.fa.fa-caret-down
+                    ul
+                        li Title (ascending)
+                        li Title (descending)
+                        li Newest first
+                        li Oldest first
+                .newnote New Note
+            .body
+                .note
+                    h3 How to win friends and influence people
+                    p Express appreciation. People yearn to be appreciated
+                    span.date Feb 4, 2016
+                    span.action.fa.fa-trash-o
+                    span.action.fa.fa-envelope-o
+                .note.selected
+                    h3 Movies watchlist
+                    p Fight club / Kill Bill / Citizenfour / Imitation game
+                    span.date Dec 17, 2015
+                    span.action.fa.fa-trash-o
+                    span.action.fa.fa-envelope-o
+        // #tags
+        // #settings        
+        // .note.selected
+        //     h3 Note Title ippet ksldjf lsk sdlfks 
+        //     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...
+        //     ul
+        //         li.tag: span Work1234560
+        //         li.tag: span programming
+        //         li.tag: span development
+    section#edit
+        #tools.header
+            ul#toolbar
+                li: span.fa.fa-bold
+                li: span.fa.fa-italic
+                li: span.fa.fa-underline
+                li: span Font 
+                    span.fa.fa-caret-down
+                li: span.fa.fa-align-left
+                li: span.fa.fa-align-center
+                li: span.fa.fa-align-right
+                li: span.fa.fa-align-justify
+            
+            .menu-toggle: span.fa.fa-ellipsis-v
+            // ul#tags
+            //     li.tag: span Ideas
+            //     li.tag: span Work
+            //     li.tag: span programming
+            //     li.tag: span +
+            // #actions-sidebar
+            
+            // ul#actions
+            //     li: span.action.fa.fa-floppy-o
+            //     li: span.action.fa.fa-envelope-o
+            //     li: span.action.fa.fa-trash-o
+        #editor
+            input(placeholder="Add a title...")
+            #content(contenteditable="true" data-text="Enter text here")
+        // #actions-sidebar
+        //     ul
+        //         li: span.action.fa.fa-floppy-o
+        //         li: span.action.fa.fa-envelope-o
+        //         li: span.action.fa.fa-trash-o

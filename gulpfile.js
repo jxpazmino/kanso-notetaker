@@ -1,13 +1,21 @@
 'use strict';
 
+function onError(err) {
+  console.log(err);
+  this.emit('end');
+}
+
 var gulp 		 = require('gulp'),
 	uglify 		 = require('gulp-uglify'),
+	gutil		 = require('gulp-util'),
 	gulpif 		 = require('gulp-if'),
 	htmlmin      = require('gulp-htmlmin'),
 	sass		 = require('gulp-sass'),
     concat       = require('gulp-concat'),
     jade		 = require('gulp-jade'),
-	// autoprefixer = require('gulp-autoprefixer'), // doesnt work with  my setup
+	plumber 	 = require('gulp-plumber'),
+	autoprefixer = require('gulp-autoprefixer'),
+	browserSync  = require('browser-sync').create(),
     sassStyle,
     env,
     htmlPretty,
@@ -26,7 +34,7 @@ if(env==='development') {
 }
     
 var jsSources = ['components/scripts/*.js'],
-    sassSources = ['components/sass/style.scss'],
+    sassSources = ['components/sass/*.scss'],
     jadeSources = ['components/jade/*.jade'];
 
 gulp.task('js', function() {
@@ -41,24 +49,40 @@ gulp.task('sass', function() {
 	.pipe(sass({
 		outputStyle: sassStyle
 	}))
-    // .pipe(autoprefixer('last 2 versions')) // doesnt work with my setup
+	.on('error', onError)
+    .pipe(autoprefixer({
+			browsers: ['last 2 versions', 'IE 9'],
+			cascade: false
+		}))
 	.pipe(gulp.dest(outputDir + 'css'));
 });
 
-gulp.task('html', function() {
-	return gulp.src('builds/development/*.html') //always read index @dev
-	.pipe(gulpif(env === 'production', htmlmin({collapseWhitespace: true})))
-	.pipe(gulpif(env === 'production', gulp.dest(outputDir)));
+// Static Server + watching scss/html files
+gulp.task('serve', ['sass', 'jade'], function() {
+
+    browserSync.init({
+        // server: "./app"
+		proxy: "localhost:8000"
+    });
+
+    gulp.watch(sassSources[0], ['sass']).on('change', browserSync.reload);
+    gulp.watch('components/jade/**/*.jade', ['jade']).on('change', browserSync.reload);
 });
+
+// gulp.task('html', function() {
+// 	return gulp.src('builds/development/*.html') //always read index @dev
+// 	.pipe(gulpif(env === 'production', htmlmin({collapseWhitespace: true})))
+// 	.pipe(gulpif(env === 'production', gulp.dest(outputDir)));
+// });
 
 gulp.task('jade', function() {
   return gulp.src(jadeSources)
     .pipe(jade({
     	pretty: htmlPretty
     }))
+	// .pipe(plumber())
+	.on('error', onError)
     .pipe(gulp.dest(outputDir))
 });
 
 gulp.task('default', ['jade', 'sass']);
-// gulp.task('default', ['js', 'sass', 'jade', 'html']);
-    

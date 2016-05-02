@@ -1,0 +1,9 @@
+div.loginForm
+    h3 Login
+    form(ng-submit="login()", name="loginForm", ng-model="formDisplay.loginForm", novalidate)
+        div.form-group
+            input(type="text" value="tst", placeholder="enter username", ng-model="login.username", tabindex="1", required, focus)
+        div.form-group
+            input(type="password" value="123", placeholder="enter password", ng-model="login.password", tabindex="2", required)
+        div.form-group
+            button(type="submit", tabindexs="3", value="submit") Log In

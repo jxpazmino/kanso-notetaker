@@ -11,104 +11,88 @@
     <link rel="canonical" href="">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <!--notes list / search / settings panel-->
-    <div class="app-container">
-      <section id="panel">
-        <div id="tabs" class="header">
-          <ul>
-            <li class="selected"><a href="#"><span class="fa fa-file-text-o"></span><span class="tooltiptext">Notes</span></a></li>
-            <li><a href="#"><span class="fa fa-search"></span><span class="tooltiptext">Search</span></a></li>
-            <li><a href="#"><span class="fa fa-tags"></span><span class="tooltiptext">Tags</span></a></li>
-            <li><a href="#"><span class="fa fa-cog"></span><span class="tooltiptext">Preferences</span></a></li>
-          </ul>
-        </div>
-        <div id="noteslist" class="currentpanel">
-          <div class="tools">
-            <div class="sort">Sort<span class="fa fa-caret-down"></span>
-              <ul>
-                <li>Title (ascending)</li>
-                <li>Title (descending)</li>
-                <li>Newest first</li>
-                <li>Oldest first</li>
-              </ul>
-            </div>
-            <div class="newnote">New Note</div>
+  <body ng-app="notepad">
+    <div ng-view>
+      <!-- include ./partials/login-->
+      <div class="app-container">
+        <section id="panel">
+          <div id="tabs" class="header">
+            <ul>
+              <li class="selected"><a href="#"><span class="fa fa-file-text-o"></span><span class="tooltiptext">Notes</span></a></li>
+              <li><a href="#"><span class="fa fa-search"></span><span class="tooltiptext">Search</span></a></li>
+              <li><a href="#"><span class="fa fa-tags"></span><span class="tooltiptext">Tags</span></a></li>
+              <li><a href="#"><span class="fa fa-cog"></span><span class="tooltiptext">Preferences</span></a></li>
+            </ul>
           </div>
-          <div class="body">
-            <!-- .note.selected-->
-            <!--     h3 Note Title ippet ksldjf lsk sdlfks -->
-            <!--     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...-->
-            <!--     ul-->
-            <!--         li.tag: span Work1234560-->
-            <!--         li.tag: span programming-->
-            <!--         li.tag: span development-->
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+          <div id="noteslist" class="currentpanel">
+            <div id="tools">
+              <div class="sort">Sort<span class="fa fa-caret-down"></span>
+                <ul>
+                  <li>Title (ascending)</li>
+                  <li>Title (descending)</li>
+                  <li>Newest first</li>
+                  <li>Oldest first</li>
+                </ul>
+              </div>
+              <div class="newnote">New Note</div>
             </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.sjda fklajslk lsjdl   slkd</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note selected">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here. lsdkj f;lksd jf;askl dfj;alks dfj;alks</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
-            </div>
-            <div class="note">
-              <h3>Note Title something else goes ehre</h3>
-              <p>something here.</p><span class="date">Jul 4, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+            <div class="body">
+              <div class="note">
+                <h3>How to win friends and influence people</h3>
+                <p>Express appreciation. People yearn to be appreciated</p><span class="date">Feb 4, 2016</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+              </div>
+              <div class="note selected">
+                <h3>Movies watchlist</h3>
+                <p>Fight club / Kill Bill / Citizenfour / Imitation game</p><span class="date">Dec 17, 2015</span><span class="action fa fa-trash-o"></span><span class="action fa fa-envelope-o"></span>
+              </div>
             </div>
           </div>
-          <!-- .tools-->
-          <!--     input(type="text")-->
-        </div>
-        <!-- #tags-->
-        <!-- #settings        -->
-      </section>
-      <section id="edit">
-        <div id="tags" class="header">
-          <!-- .menu-toggle: span.fa.fa-bars-->
-          <ul>
-            <li class="tag"><span>Ideas</span></li>
-            <li class="tag"><span>Work</span></li>
-            <li class="tag"><span>programming</span></li>
-            <li class="tag"><span>+</span></li>
-          </ul>
-        </div>
-        <div id="edit-body">
-          <input placeholder="Add a title...">
-          <textarea placeholder="Enter text here"></textarea>
-          <!-- .content(contenteditable="true" data-text="Enter text here")-->
-        </div>
-        <!-- #actions-sidebar-->
-        <!--     ul-->
-        <!--         li: span.action.fa.fa-floppy-o-->
-        <!--         li: span.action.fa.fa-envelope-o-->
-        <!--         li: span.action.fa.fa-trash-o-->
-      </section>
+          <!-- #tags-->
+          <!-- #settings        -->
+          <!-- .note.selected-->
+          <!--     h3 Note Title ippet ksldjf lsk sdlfks -->
+          <!--     p note snippet ksldjf lsk djflssldkjf laks dlfaksj dflkasjdflkas djflaks ...-->
+          <!--     ul-->
+          <!--         li.tag: span Work1234560-->
+          <!--         li.tag: span programming-->
+          <!--         li.tag: span development-->
+        </section>
+        <section id="edit">
+          <div id="tools" class="header">
+            <ul id="toolbar">
+              <li><span class="fa fa-bold"></span></li>
+              <li><span class="fa fa-italic"></span></li>
+              <li><span class="fa fa-underline"></span></li>
+              <li><span>Font <span class="fa fa-caret-down"></span></span></li>
+              <li><span class="fa fa-align-left"></span></li>
+              <li><span class="fa fa-align-center"></span></li>
+              <li><span class="fa fa-align-right"></span></li>
+              <li><span class="fa fa-align-justify"></span></li>
+            </ul>
+            <div class="menu-toggle"><span class="fa fa-ellipsis-v"></span></div>
+            <!-- ul#tags-->
+            <!--     li.tag: span Ideas-->
+            <!--     li.tag: span Work-->
+            <!--     li.tag: span programming-->
+            <!--     li.tag: span +-->
+            <!-- #actions-sidebar-->
+            <!-- ul#actions-->
+            <!--     li: span.action.fa.fa-floppy-o-->
+            <!--     li: span.action.fa.fa-envelope-o-->
+            <!--     li: span.action.fa.fa-trash-o-->
+          </div>
+          <div id="editor">
+            <input placeholder="Add a title...">
+            <div id="content" contenteditable="true" data-text="Enter text here"></div>
+          </div>
+          <!-- #actions-sidebar-->
+          <!--     ul-->
+          <!--         li: span.action.fa.fa-floppy-o-->
+          <!--         li: span.action.fa.fa-envelope-o-->
+          <!--         li: span.action.fa.fa-trash-o-->
+        </section>
+      </div>
     </div>
+    <!-- include ./includes/scripts-->
   </body>
-  <script src="js/angular.min.js"> </script>
-  <script src="js/bundle.js"> </script>
 </html>

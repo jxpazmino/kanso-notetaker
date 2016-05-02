@@ -50,10 +50,10 @@ $default-bg-preview-header: #f2f2f2;
 $default-bg-preview-body: $white;
 $default-preview-text-color: #212121;
 
-$header-height:            65px;
+$header-height:         65px;
 $nav-width:             75px;
 // $tools-height:          30px;
-$sub-header-height:     50px;
+$sub-header-height:     56px;
 $notespanel-width:      $nav-width * 4;
 $notesinfo-width:       280px;
 $actions-sidebar-width: 74px;
@@ -67,3 +67,4 @@ $font-editor: "Roboto Mono", monospace;
 
 
 $panel-width: $nav-width * 4;
+$edit-body-margin: 45px;

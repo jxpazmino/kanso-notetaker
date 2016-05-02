@@ -1,0 +1,406 @@
+.app-container {
+    max-width: 1300px;
+    margin: 20px auto;
+    min-height: 500px;
+    min-width: 700px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px #676767;
+    @include mobile {
+        margin: 0 auto;
+        height: 100vh;
+    }
+    @include desktop {
+        margin: 20px auto;
+        height: calc(100vh - 40px);
+    }
+}
+
+%spacer {
+    border-bottom: 2px solid $notes-spacer;
+}
+
+.tag {
+    margin: 0.3em 0.3em 0.2em 0;
+    border-radius: 13px;
+    height: 23px;
+    border: 2px solid $notes-tag-border;
+    color: $notes-tag-name;
+    background-color: transparent;
+    min-width: 42px;
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    line-height: 0.85em;
+    font-size: 0.85rem;
+    
+    .selected {
+        border: 2px solid $notes-tag-border-selected; 
+        color: $notes-tag-name-selected;
+    }
+    
+    span {
+        display: inline-block;
+        margin: 0.59em 1.42em 0;
+    }
+}
+
+.header {
+    height: $header-height;
+}
+
+#panel {
+    background-color: $bg-color-1;
+    width: $panel-width;
+    height: 100%;
+    float: left;
+    
+    #tabs {
+        background-color: $bg-color-2;
+        li {
+            float: left;
+            width: $nav-width;
+            height: $header-height;
+            font-size: 22px;
+            text-align: center;
+            position: relative;
+            &.selected {
+                span {
+                    color: $white;
+                }
+                background-color: $bg-color-1;
+            }
+            .fa {
+                color: #cdcdcf;
+                margin-top: 23px;
+                &:hover {
+                    color: $white;
+                }
+            }
+            .tooltiptext {
+                visibility: hidden;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                padding: 4px 6px;
+                border-radius: 2px;
+                font-size: 0.6em;
+                position: absolute;
+                top: 0;
+                left: 43px;
+                z-index: 10;
+                transition-property: visibility;
+            }
+            a:hover .tooltiptext {
+                visibility: visible;
+                transition-delay: 650ms;
+            }
+        }
+    }
+    
+    .currentpanel {
+        display: block !important;
+    }
+    
+    #noteslist {
+        display: none;
+        #tools {
+            text-align: center;
+            height: $sub-header-height;
+            @extend %spacer;
+            &:last-of-type {
+                border-top: 1px solid $notes-spacer;
+            }
+            .newnote {
+                @include borderbox;
+                height: 36px;
+                width: 120px;
+                float: right;
+                border-radius: 3px;
+                background-color: $special-button;
+                color: $white;
+                text-align: center;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 2.5rem;
+                margin: 10px;
+                &:hover {
+                    background-color: darken($special-button, 6%);
+                }
+            }
+            .sort {
+                cursor: pointer;
+                float: left;
+                color: $white;
+                margin-top: 18px;
+                margin-left: 14px;
+                position: relative;
+                span {
+                    margin: auto 5px;
+                }
+                ul {
+                    cursor: default;
+                    text-align: left;
+                    display: none;
+                    z-index: 20;
+                    position: absolute;
+                    height: 120px;
+                    width: 130px;
+                    background-color: $bg-default;
+                    top: 22px;
+                    font-size: 1.1rem;
+                    color: $notes-title;
+                    font-weight: bold;
+                    line-height: 2.2rem;
+                    border: 1px solid lighten($bg-default, 10%);
+                    padding: 8px 3px 8px 10px;
+                    box-shadow: 0 2px 17px 2px darken($bg-default, 30%);
+                }
+                &:hover {
+                    ul {
+                        display: block;
+                    }
+                }
+            }
+            
+            // input {
+            //     @include borderbox;
+            //     padding: 8px 13px;
+            //     width: 100%;
+            //     border: 0;
+            //     border-radius: 5px;
+            //     background-color: #EAEAEA;
+            //     height: 30px;
+            //     color: #302F31;
+            //     font-size: 1.12rem;
+            //     outline: none;
+            //     border-bottom: 1px solid lighten($bg-color-1, 35%);
+            //     display: inline-block;
+            //     &:focus {
+            //         background-color: #d9e8f9;
+            //     }
+            // }
+            @include clearfix;
+        }
+    }
+    
+    .body {
+        overflow-y: scroll;
+        @include mobile {
+            height: calc(100vh - #{$header-height} - #{$sub-header-height} - 2px);
+        }
+        @include desktop {
+            height: calc(100vh - #{$header-height} - #{$sub-header-height} - 42px);
+        }
+    }
+    .note {
+        cursor: default;
+        height: 74px;
+        @extend %spacer;
+        padding: 10px 14px;
+        margin: 0;
+        color: $notes-excerpt;
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: $notes-title;
+            font-weight: bold;
+            padding-right: 12px;
+            @extend %ellipsis;
+        }
+        p {
+            margin: 7px 0;
+            padding-right: 12px;
+            @extend %ellipsis;
+        }
+        .date {
+            margin: 2px 0 0;
+            float: left;
+            font-size: 0.9rem;
+        }
+        .action {
+            margin: 0 2px 0 15px;
+            float: right;
+            font-size: 1.3em;
+            visibility: hidden;
+            cursor: pointer;
+            &:hover {
+                color: $white;
+            }
+        }
+        &.selected {
+            background-color: darken($bg-color-1, 20%);
+            &:hover {
+                background-color: darken($bg-color-1, 20%) !important;
+            }
+        }
+        &:hover {
+            background-color: darken($bg-color-1, 7%);
+            .action {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+#edit {
+    // position: relative;
+    height: 100%;
+    width: calc(100% - $panel-width);
+    background-color: $default-bg-preview-body;
+    color: $default-preview-text-color;
+    #tools {
+        background-color: $default-bg-preview-header;
+        .menu-toggle {
+            width: 30px;
+            height: 52px;
+            float: right;
+            text-align: center;
+            padding-top: 12px;
+            padding-right: 27px;
+            span {
+                @include borderbox;
+                cursor: pointer;
+                font-size: 24px;
+                color: #767676;
+                line-height: 42px;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                &:hover {
+                    background-color: #ababab;
+                    color: $white;
+                }
+            }
+        }
+        #tags {
+            @include borderbox;
+            padding-top: 15px;
+            float: left;
+            height: $header-height;
+            max-width: calc(100% - #{$notespanel-width} - 265px);
+            @extend %ellipsis;
+            li {
+                margin-right: 10px;
+                display: inline-block;
+            }
+        }
+        #toolbar {
+            margin-top: 17px;
+            margin-left: 19px;
+            @include borderbox;
+            float: left;
+            height: 40px;
+            max-width: calc(100% - #{$notespanel-width} - 265px);
+            white-space: nowrap;
+            overflow: hidden;
+            @include mobile {
+                width: 100px;
+            }
+            @include tablet {
+                width: 300px;
+            }
+            
+            li {
+                @include borderbox;
+                display: inline-block;
+                height: 30px;
+                min-width: 26px;
+                text-align: center;
+                cursor: pointer;
+                border: 1px solid transparent;
+                > span {
+                    @include borderbox;
+                    font-size: 14px;
+                    line-height: 14px;
+                    display: inline-block;
+                    color: #545454;
+                    cursor: pointer;
+                    margin: 8px;
+                    &.fa {
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+                }
+                &:hover {
+                    color: $white;
+                    border-color: #ccc;
+                    box-shadow: 0 1px 1px #888;
+                    background-color: #d8d8d8;
+                }
+            }
+        }
+        #actions {
+            float: right;
+            width: 195px;
+            height: calc(100% - #{$header-height});
+            background-color: $bg-info-body;
+            li {
+                text-align: center;
+                margin: 12px 8px;
+                display: inline-block;
+            }
+            span {
+                cursor: pointer;
+                @include borderbox;
+                text-align: center;
+                padding: 8px;
+                border-radius: 50%;
+                height: 44px;
+                width: 44px;
+                font-size: 21px;
+                line-height: 1rem;
+                background-color: $white;
+                border: 1px solid #dcdcdc;
+                color: $blue;
+                vertical-align: middle;
+                display: table-cell;
+                margin: 0 auto;
+                &:hover {
+                    background-color: $blue;
+                    border-color: $blue;
+                    color: $white;
+                }
+            }
+        }
+    }
+    #editor {
+        font-family: $font-editor;
+        overflow-y: hidden;
+        float: left;
+        height: calc(100% - #{$header-height});
+        width: calc(100% - #{$notespanel-width});
+        background-color: $white;
+        input {
+            @include borderbox;
+            padding: 0 $edit-body-margin;
+            font-size: 1.45rem;
+            width: 100%;
+            height: calc(#{$sub-header-height} + 2px);
+            line-height: calc(#{$sub-header-height} + 2px);
+            font-weight: 500;
+            outline: none;
+            overflow: none;
+            box-shadow: none;
+            border: 0;
+            border-bottom: 2px solid $default-bg-preview-header;
+        }
+        #content {
+            @include borderbox;
+            padding: 14px $edit-body-margin;
+            font-size: 1.1rem;
+            width: 100%;
+            resize: none;
+            overflow-y: auto;
+            height: calc(100% - #{$header-height} + 7px);
+            outline: none;
+            overflow: none;
+            box-shadow: none;
+            border: 0;
+        }
+        [contentEditable=true]:empty:before{
+            content: attr(data-text);
+            color: #b1a9a9;
+        }
+    }
+}
